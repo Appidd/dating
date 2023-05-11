@@ -1,0 +1,10 @@
+<view class="page_box">
+    <navigation-bar></navigation-bar>
+    <view class="scroll_box_outer">
+        <scroll-view class="scroll_box" scroll-y paging-enabled="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" >
+        <block wx:for="{{list}}">
+            <card item="{{item}}"></card>
+        </block>
+        </scroll-view>
+    </view>
+</view>

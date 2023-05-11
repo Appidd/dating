@@ -1,0 +1,25 @@
+.page_box{
+    height: 100vh;
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   /* align-items: center; */
+   flex-direction: column;
+   /* background-color: red; */
+}
+.scroll_box_outer{
+    position: relative;
+    flex-grow: 1;
+}
+.scroll_box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    padding: 0rpx 24rpx;
+    box-sizing: border-box;
+}

@@ -1,0 +1,48 @@
+.navigation-bar {
+    background-color: #fff;
+  }
+  
+  .navigation-bar .android {
+    height: 48px;
+  }
+  
+  .navigation-bar__inner {
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .navigation-bar__inner .navigation-bar__left {
+    position: relative;
+    padding-left: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .downArr{
+      margin-left: 8rpx;
+      width: 32rpx;
+      height: 32rpx;
+  }
+  .trumpet{
+    width: 25rpx;
+    height: 25rpx;
+  }
+.navigation-bar__buttons {
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-left: 24rpx;
+  }
+  .notice{
+      font-size: 24rpx;
+      margin-left: 20rpx;
+      color: #999999;
+  }
+  
+  

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+      "navigation-bar":"/components/naviagtion-bar/naviagtion-bar",
+      "card":"/components/card/card"
+  },
+  "navigationStyle": "custom",
+ "disableScroll": true
+}

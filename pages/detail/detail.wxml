@@ -1,0 +1,88 @@
+<view class="container">
+   
+        <image src="/static/images/icon/bg.jpg" mode="aspectFill" class="imgs"/>
+    
+    <view style="padding:0rpx 16rpx">
+        <view class="name_age">
+            芭比 <text style="margin-left: 48rpx;">22</text> <view class="yearBirth" style="width: 120rpx;">龙</view>
+        </view>
+        <view class="address">
+            潮汕-汕头市（8.83km）
+        </view>
+        <view class="about_me">
+            关于我
+        </view>
+        <view class="about_detail">
+            不Y  喜欢能够给我提供情绪价值的朋友  不擅长聊天  希望你是趣的酒搭子饭搭子
+        </view>
+        <view class="tags">
+            <view class="tag">
+                167cm
+            </view>
+            <view class="tag">
+                56kg
+            </view>
+            <view class="tag">
+               狮子座
+            </view>
+        </view>
+        <view class="about_me">
+            基础信息
+        </view>
+        <view class="name">
+            李思染
+        </view>
+        <view class="bg">
+            家庭背景 <text style="margin-left: 32rpx;">有个弟弟</text>
+        </view>
+        <view class="reveng" style="margin-top: 16rpx;">
+            年收入 <text style="margin-left: 32rpx;">10W以上</text>
+        </view>
+        <view class="tags">
+            <view class="tag">
+                IT/互联网
+            </view>
+            <view class="tag">
+                本科
+            </view>
+          
+        </view>
+
+        <view class="about_me">
+            兴趣爱好
+        </view>
+        <view class="tags">
+            <view class="tag">
+                刷剧
+            </view>
+            <view class="tag">
+                购物
+            </view>
+            <view class="tag">
+                旅游
+            </view>
+        </view>
+        <view class="about_me">
+            择偶标准
+        </view>
+        <view class="about_detail">
+            不抽烟，身高170以上，温柔，私生活干净，阳光开朗
+        </view>
+    </view>
+
+    <view style="height: 200rpx;">
+        
+    </view>
+
+    
+</view>
+<view class="bottom_fun">
+        <view class="funbtn">
+            <image src="/static/images/icon/detailClose.png" mode="scaleToFill"/>
+            <image src="/static/images/icon/detailCollect.png" mode="scaleToFill"/>
+            <image src="/static/images/icon/detailLike.png" mode="scaleToFill"/>
+            <view class="contact">
+                获取联系
+            </view>
+        </view>
+</view>
