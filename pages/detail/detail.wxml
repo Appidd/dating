@@ -1,7 +1,9 @@
 <view class="container">
-   
-        <image src="/static/images/icon/bg.jpg" mode="aspectFill" class="imgs"/>
-    
+    <swiper class="swiper imgs" indicator-dots  indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" style="{{swiper.style}}">
+    <swiper-item class="swiper_item" wx:for="{{list}}" bindtap="change" >
+        <image src="/static/images/icon/bg.jpg" mode="aspectFill" class="imgs" />
+    </swiper-item>
+  </swiper>
     <view style="padding:0rpx 16rpx">
         <view class="name_age">
             芭比 <text style="margin-left: 48rpx;">22</text> <view class="yearBirth" style="width: 120rpx;">龙</view>
@@ -78,7 +80,7 @@
 </view>
 <view class="bottom_fun">
         <view class="funbtn">
-            <image src="/static/images/icon/detailClose.png" mode="scaleToFill"/>
+            <image src="/static/images/icon/detailClose.png" mode="scaleToFill" bindtap="getBack"/>
             <image src="/static/images/icon/detailCollect.png" mode="scaleToFill"/>
             <image src="/static/images/icon/detailLike.png" mode="scaleToFill"/>
             <view class="contact">

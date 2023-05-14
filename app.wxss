@@ -8,3 +8,14 @@
   padding: 0rpx 24rpx;
   box-sizing: border-box;
 } 
+swiper .wx-swiper-dots .wx-swiper-dot{
+    width: var(--dotwidth);    
+    height: 6rpx;  
+    border-radius: 4rpx;  
+  }
+  .wx-swiper-dots.wx-swiper-dots-horizontal {
+    /* background-color: aquamarine; */
+    top: 40rpx;
+    /* height: 10rpx; */
+    pointer-events:none;
+  }

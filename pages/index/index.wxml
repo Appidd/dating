@@ -1,10 +1,12 @@
 <view class="page_box">
     <navigation-bar></navigation-bar>
     <view class="scroll_box_outer">
-        <scroll-view class="scroll_box" scroll-y paging-enabled="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" >
-        <block wx:for="{{list}}">
+        <scroll-view class="scroll_box" refresher-triggered="{{triggered}}" scroll-y paging-enabled="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}" refresher-enabled  bindrefresherrefresh="refresh"  >
+        <block wx:for="{{list}}" wx:key="index">
             <card item="{{item}}"></card>
         </block>
         </scroll-view>
     </view>
 </view>
+
+

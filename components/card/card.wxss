@@ -1,13 +1,12 @@
 /* components/card/card.wxss */
 .card_box{
     width: 100%;
-    height: 100%;
-    /* background-color: gold; */
+    height: 99%;
     border-radius: 32rpx;
     position: relative;
 }
 .like_collect{
-    
+    z-index: 999;
     bottom: 50rpx;
     right: 48rpx;
 position: absolute;
@@ -22,6 +21,7 @@ flex-direction: column;
     margin-top: 48rpx;
 }
 .name_age_intro{
+    z-index: 99;
     position: absolute;
     bottom: 34rpx;
     width: 450rpx;
@@ -50,3 +50,12 @@ letter-spacing: 4rpx;
     height: 100%;
     border-radius: 32rpx;
 }
+.swiper{
+    height: 100%;
+    width: 100%;
+  }
+  .swiper_item{
+    height: 100%;
+    width: 100%;
+  }
+
