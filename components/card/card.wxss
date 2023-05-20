@@ -1,25 +1,15 @@
 /* components/card/card.wxss */
 .card_box{
-    width: 100%;
-    height: 99%;
+    width: 100vw;
+    height: 100%;
     border-radius: 32rpx;
     position: relative;
+    padding: 0rpx 24rpx;
+    box-sizing: border-box;
+ 
 }
-.like_collect{
-    z-index: 999;
-    bottom: 50rpx;
-    right: 48rpx;
-position: absolute;
-display: flex;
-flex-direction: column;
-}
-.like_collect image{
-    width: 84rpx;
-    height: 84rpx;
-}
-.like_collect image:nth-child(2){
-    margin-top: 48rpx;
-}
+
+
 .name_age_intro{
     z-index: 99;
     position: absolute;
@@ -27,7 +17,7 @@ flex-direction: column;
     width: 450rpx;
     /* height: 450rpx; */
     /* background-color: gray; */
-    left: 36rpx;
+    left: 60rpx;
 color: #fff;
 }
 .name_age{
@@ -49,13 +39,7 @@ letter-spacing: 4rpx;
     width: 100%;
     height: 100%;
     border-radius: 32rpx;
+    box-sizing: border-box;
 }
-.swiper{
-    height: 100%;
-    width: 100%;
-  }
-  .swiper_item{
-    height: 100%;
-    width: 100%;
-  }
+
 

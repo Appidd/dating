@@ -1,23 +1,23 @@
+
 // pages/detail/detail.js
+const app=getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        list:[1,2,3]
+        itemObj:null
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let length=this.data.list.length
+        console.log(app.globalData.itemObj)
         this.setData({
-            swiper:{
-              style:`--dotwidth:${600/length}rpx`
-            }
-          })
+            itemObj:app.globalData.itemObj
+        })
     },
     getBack(){
         wx.navigateBack()

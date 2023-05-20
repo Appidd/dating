@@ -1,8 +1,5 @@
 <view class="card_box"  >
-  <view class="like_collect">
-      <image src="/static/images/icon/like.png" mode="aspectFill"/>
-      <image src="/static/images/icon/collect.png" mode="aspectFill"/>
-  </view>
+ 
   <view class="name_age_intro">
       <view class="name_age">
           {{item.name}} <text style="margin-left: 32rpx;">{{item.age}}</text>
@@ -14,9 +11,6 @@
           {{item.introduce}}
       </view>
   </view>
-  <swiper class="swiper" indicator-dots  indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" style="{{swiper.style}}">
-    <swiper-item class="swiper_item" wx:for="{{list}}"  >
-        <image src="/static/images/icon/bg.jpg" mode="aspectFill" class="bg" bindtouchend="handletouchend" bindtouchstart="handletouchstart"/>
-    </swiper-item>
-  </swiper>
+  <image src="{{item.coverImg}}" mode="aspectFill" class="bg" bindtap="toDetail"/>
+  
 </view>
