@@ -5,9 +5,62 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        currentIndex:1,
+        recommendList:[
+            {  id:1,
+                isNew:true,
+                name:'李思思',
+                contact:'xiao-lsd',
+                cover_img:'/static/images/icon/water_img.png'
+            },
+            {
+                id:1,
+                isNew:false,
+                name:'范冰冰',
+                contact:'fan binbin',
+                cover_img:'/static/images/icon/water_img.png'
+            },
+            {
+                id:1,
+                isNew:false,
+                name:'李思瑶',
+                contact:'cons-lsd',
+                cover_img:'/static/images/icon/water_img.png'
+            },
+            {
+                id:1,
+                isNew:false,
+                name:'王丽',
+                contact:'xiao-fdsf',
+                cover_img:'/static/images/icon/water_img.png'
+            },
+            {
+                id:1,
+                isNew:false,
+                name:'王丽',
+                contact:'xiao-fdsf',
+                cover_img:'/static/images/icon/water_img.png'
+            }
+        ]
     },
-
+    changeTab(e){
+        console.log(e)
+       let index=e.currentTarget.dataset.index
+        this.setData({
+            currentIndex:index
+        })
+    },
+    toPrivce(){
+        wx.showToast({
+          title: '开发中',
+          icon:'none'
+        })
+    },
+    toGroup(){
+        wx.navigateTo({
+          url: '/pages/group/group',
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

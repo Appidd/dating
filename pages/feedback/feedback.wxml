@@ -1,0 +1,28 @@
+<view class="container">
+   <view class="title_num_box">
+    <view class="title" style="margin-top: 20rpx;">
+        问题与意见
+    </view>
+    <view class="num">
+        {{textNum}}/200
+    </view>
+   </view>
+    <textarea model:value="{{opinion}}" placeholder="请填写你的问题和意见，感谢你的支持~" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
+    <view class="title" style="margin-top: 48rpx;">
+       图片
+    </view>
+    <view class="add_img">
+        <image src="/static/images/icon/add_icon.png" mode="aspectFill" class="add_icon"/>
+    </view>
+    <view class="title" style="margin-top: 48rpx;">
+       联系方式
+    </view>
+    <input model:value="{{contact}}" placeholder="留下联系方式，更快解决问题~" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+</view>
+<view class="bottom_fun">
+        <view class="funbtn">
+            <view class="contact">
+                提交
+            </view>
+        </view>
+</view>

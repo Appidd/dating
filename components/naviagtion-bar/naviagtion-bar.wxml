@@ -1,6 +1,6 @@
 <view class="navigation-bar">
   <view class="navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="margin-top: {{statusBarHeight}}px; color: {{color}};background: {{background}}">
-        <view class="navigation-bar__buttons" >
+        <view class="navigation-bar__buttons"  bindtap="toFilter">
           筛选
         </view>
         <image src="/static/images/icon/downArrow.png" mode="aspectFill" class="downArr"/>

@@ -6,8 +6,6 @@
             <view style="display: flex;height: 100%;">
                <card item="{{item}}" wx:for="{{list}}"></card>
             </view>
-          
-            
         </scroll-view>
     </view>
 </view>

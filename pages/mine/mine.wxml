@@ -1,2 +1,72 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="container" style="height: 100vh;width: 100vw;">
+    <navigation-mine></navigation-mine>
+    <view class="scroll_box">
+    <scroll-view scroll-y class="scroll_view"  enhanced show-scrollbar="{{false}}">
+        <view class="user_Info">
+            <image src="/static/images/icon/default_avatar.png" mode="" class="user_avatar box_bgcolor"/>
+            <view class="name_id">
+                <view class="user_name">
+                    <view >
+                        李思染
+                    </view>
+                    <image src="/static/images/icon/girl.png" mode="" class="sex"/>
+                </view>
+                <view class="user_id">
+                    ID:156482452
+                </view>
+            </view>
+        </view>
+        <view class="btn_list">
+            <view class="btn_item">
+                <image src="/static/images/icon/edit.png" mode="" class="btn_icon"/>
+                <view class="btn_name">
+                    信息编辑
+                </view>
+            </view>
+            <view class="btn_item" bindtap="toPrivce">
+                <image src="/static/images/icon/safe.png" mode="" class="btn_icon"/>
+                <view class="btn_name">
+                    隐私设置
+                </view>
+            </view>
+            <view class="btn_item" bindtap="toGroup">
+                <image src="/static/images/icon/group.png" mode="" class="btn_icon"/>
+                <view class="btn_name">
+                    交流群
+                </view>
+            </view>
+        </view>
+        <image src="/static/images/icon/swiper_mine.png" mode="" class="swiper_item box_bgcolor"/>
+
+        <view class="tabList">
+            
+                <view class="default_tab {{currentIndex==1?'active_tab':''}}" data-index="{{1}}" bindtap="changeTab">
+                    已匹配
+                </view>
+                <view class="default_tab  {{currentIndex==2?'active_tab':''}}" data-index="{{2}}" bindtap="changeTab">
+                <view class="msg_num">
+                    6
+                </view>
+                    请求
+                </view>
+           
+        </view>
+        <view class="waterfall">
+            <view class="water_item" wx:for="{{recommendList}}">
+              <view class="is_new" wx:if="{{item.isNew}}">
+                  New
+              </view>
+              <image src="{{item.cover_img}}" mode="aspectFill" class="water_img"/>
+              <view class="info">
+                  <view class="name">
+                    {{item.name}}
+                  </view>
+                  <view class="contact">
+                    {{item.contact}}
+                  </view>
+              </view>
+            </view>
+        </view>
+    </scroll-view>
+    </view>
+</view>

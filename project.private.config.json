@@ -20,6 +20,48 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "agreement",
+                    "pathName": "pages/agreement/agreement",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "group",
+                    "pathName": "pages/group/group",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "setting",
+                    "pathName": "pages/setting/setting",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "feedback",
+                    "pathName": "pages/feedback/feedback",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "report",
+                    "pathName": "pages/report/report",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "筛选",
+                    "pathName": "pages/filter/filter",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

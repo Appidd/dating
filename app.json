@@ -2,7 +2,14 @@
   "pages":[
     "pages/index/index",
     "pages/mine/mine",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/agreement/agreement",
+    "pages/setting/setting",
+    "pages/group/group",
+    "pages/feedback/feedback",
+    "pages/report/report",
+    "pages/filter/filter",
+    "pages/privacy/privacy"
   ],
   "window":{
     "backgroundTextStyle":"light",

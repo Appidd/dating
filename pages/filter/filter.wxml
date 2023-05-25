@@ -1,0 +1,72 @@
+<view class="container">
+    <view class="between_box bold">
+        <view>
+            年龄段
+        </view>
+        <view>
+            {{beginAge}} - {{endAge}}
+        </view>
+    </view>
+   <view style="margin-top: 46rpx;">
+    <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge"  bar-height='4' active-color="#000" min="16" max="60">
+    
+    </van-slider>
+   </view>
+
+   <view class="between_box bold" style="margin-top: 58rpx;">
+        <view>
+            身高范围
+        </view>
+        <view>
+            {{lowHeight}} - {{higHeight}} (cm)
+        </view>
+    </view>
+   <view style="margin-top: 46rpx;">
+    <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight"  bar-height='4' active-color="#000" min="150" max="196">
+    
+    </van-slider>
+   </view>
+   <view class="title bold">
+    性别
+   </view>
+   <view class="choose_box">
+       <view>
+        不限
+       </view>
+       <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
+   </view>
+   <view class="title bold">
+    学历
+   </view>
+   <view class="choose_box">
+       <view>
+        本科
+       </view>
+       <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
+   </view>
+   <view class="title bold">
+    地区
+   </view>
+   <view class="choose_box">
+       <view>
+        选择地区
+       </view>
+       <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
+   </view>
+</view>
+<view class="reset">
+        <view class="restbtn">
+            <view class="restcontact">
+                重置
+            </view>
+        </view>
+</view>
+<view class="bottom_fun">
+        <view class="funbtn">
+            <view class="contact">
+                确定
+            </view>
+        </view>
+</view>
+
+

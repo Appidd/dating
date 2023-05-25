@@ -5,7 +5,7 @@
   flex-direction: column;
   /* align-items: center; */
   justify-content: space-between;
-  padding: 0rpx 24rpx;
+  padding: 0rpx 48rpx;
   box-sizing: border-box;
 } 
 swiper .wx-swiper-dots .wx-swiper-dot{

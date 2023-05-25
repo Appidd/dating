@@ -1,1 +1,176 @@
 /* pages/mine/mine.wxss */
+.scroll_box {
+    flex-grow: 1;
+    /* background-color: gold; */
+    position: relative;
+}
+
+.scroll_view {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+}
+
+.box_bgcolor {
+    background-color: rgb(219, 216, 216);
+}
+
+.user_Info {
+    margin-top: 30rpx;
+    display: flex;
+}
+
+.user_avatar {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}
+
+.name_id {
+    margin-left: 46rpx;
+
+}
+
+.user_name {
+    display: flex;
+    align-items: center;
+    font-size: 40rpx;
+    font-weight: bold;
+}
+
+.sex {
+    width: 48rpx;
+    height: 48rpx;
+    margin-left: 50rpx;
+}
+
+.user_id {
+    color: #999999;
+    font-size: 28rpx;
+    margin-top: 24rpx;
+}
+
+.btn_list {
+    width: 100%;
+    /* background-color: gray; */
+    margin-top: 48rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_item {
+    width: 108rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn_icon {
+    width: 48rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+}
+
+.btn_name {
+    color: #999999;
+    font-size: 24rpx;
+    margin-top: 8rpx;
+}
+
+.swiper_item {
+    width: 654rpx;
+    height: 286rpx;
+    border-radius: 24rpx 24rpx 24rpx 24rpx;
+    margin-top: 24rpx;
+}
+.tabList{
+    display: flex;
+    justify-content: center;
+    margin-top: 48rpx;
+}
+.default_tab{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #CCCCCC;
+    position: relative;
+}
+.default_tab:nth-child(2){
+    margin-left: 96rpx;
+}
+.active_tab{
+    color: #000;
+    position: relative;
+}
+.active_tab::after{
+    content: '';
+    position: absolute;
+  
+    top: 120%;
+    /* -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%); */
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    left: 50%;
+    width: 48rpx;
+    height: 6rpx;
+    background-color: #202020;
+    border-radius: 30rpx;
+    /* vertical-align: middle; */
+}
+.msg_num{
+    position: absolute;
+    top: -15rpx;
+    right: -15rpx;
+    width: 20rpx;
+height: 20rpx;
+background: #D32D25;
+opacity: 1;
+font-size: 16rpx;
+line-height: 20rpx;
+text-align: center;
+border-radius: 50%;
+}
+
+.waterfall{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.water_item{
+    height: 378rpx;
+    width: 310rpx;
+    background-color: rgb(219, 216, 216);
+    margin-top: 32rpx;
+    border-radius: 16rpx;
+    position: relative;
+}
+.water_img{
+    height: 100%;
+    width: 100%;
+    border-radius: 16rpx;
+}
+.info{
+    position: absolute;
+    bottom: 24rpx;
+    left: 24rpx;
+    color: #D9D9D9;
+    font-size: 24rpx;
+}
+.is_new{
+    position: absolute;
+    top: 16rpx;
+    left: 24rpx;
+    width: 80rpx;
+
+background: rgba(255,105,105,0.6);
+border-radius: 8rpx 8rpx 8rpx 8rpx;
+opacity: 1;
+font-size: 24rpx;
+text-align: center;
+line-height: 42rpx;
+color: #fff;
+}

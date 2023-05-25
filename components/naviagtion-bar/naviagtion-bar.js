@@ -66,5 +66,10 @@ Component({
         }
         this.triggerEvent('back', { delta: data.delta }, {});
       },
+      toFilter(){
+          wx.navigateTo({
+            url: '/pages/filter/filter',
+          })
+      },
     },
   });

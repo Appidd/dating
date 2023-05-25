@@ -1,0 +1,24 @@
+/* pages/agreement/agreement.wxss */
+.container_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 48rpx;
+}
+.logo{
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 20rpx;
+}
+.title{
+    width: 100%;
+    font-size: 24rpx;
+    font-weight: bold;
+    margin-top: 48rpx;
+}
+.content{
+    width: 100%;
+    font-size: 24rpx;
+    margin-top: 48rpx;
+}

@@ -1,0 +1,27 @@
+<view class="container">
+    <view class="container_box">
+        <image src="/static/images/icon/group_scan.png" mode="aspectFill" class="group_scan" />
+        
+        <view class="group_name">
+            微信交流群
+        </view>
+
+
+  
+        <view class="content" style="margin-top: 90rpx;">
+            同时，我们也非常欢迎商务合作。如果您对我们的产品或服务感兴趣，可以通过以下方式与我们联系：
+        </view>
+        <view class="content" >
+            1.电子邮件：info@wetab.com
+        </view>
+        <view class="content">
+            2.电话：+86 123456789
+        </view>
+        <view class="content">
+            3.在我们的网站上填写联系表格
+        </view>
+        <view class="content">
+            我们愿意提供更多的详细信息，并为您定制最适合您业务需求的解决方案。期待与您的合作！
+        </view>
+    </view>
+</view>

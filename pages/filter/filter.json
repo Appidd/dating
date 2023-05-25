@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "van-slider": "@vant/weapp/slider/index"
+    },
+    "navigationBarTitleText": "筛选",
+    "disableScroll": true
+}

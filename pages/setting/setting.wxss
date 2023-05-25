@@ -1,0 +1,49 @@
+/* pages/agreement/agreement.wxss */
+.container_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 48rpx;
+}
+.nav_item{
+  
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #000E1A;
+    font-weight: bold;
+   padding: 48rpx 0rpx;
+    border-bottom: 2rpx solid #CCCCCC;
+}
+.arr{
+    width: 48rpx;
+    height: 48rpx;
+}
+.bottom_fun{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    padding: 20rpx 68rpx 48rpx 68rpx;
+    box-sizing: border-box;
+}
+.funbtn{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.contact{
+    width: 654rpx;
+    height: 96rpx;
+    background: #202020;
+    border-radius: 8rpx 8rpx 8rpx 8rpx;
+    opacity: 1;
+    font-size: 28rpx;
+    line-height: 96rpx;
+    color: #fff;
+    text-align: center;
+}
+

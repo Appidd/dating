@@ -1,0 +1,5 @@
+<view class="navigation-bar" bindtap="toSetting">
+  <view class="navigation-bar__inner {{ios ? 'ios' : 'android'}}" style="margin-top: {{statusBarHeight}}px; color: {{color}};background: {{background}}">
+        <image src="/static/images/icon/setting.png" mode="aspectFill" class="setting_icon"/>
+  </view>
+</view>

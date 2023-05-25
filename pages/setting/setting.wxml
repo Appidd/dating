@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="container_box">
+        <view class="nav_item" bindtap="toFeedback">
+            <view>
+                意见反馈
+            </view>
+            <image src="/static/images/icon/rightArrow.png" mode="aspectFill" class="arr"/>
+
+        </view>
+        <view class="nav_item" bindtap="toReport">
+            <view>
+                举报
+            </view>
+            <image src="/static/images/icon/rightArrow.png" mode="aspectFill" class="arr"/>
+
+        </view>
+        <view class="nav_item" bindtap="toAgreement">
+            <view>
+                平台协议
+            </view>
+            <image src="/static/images/icon/rightArrow.png" mode="aspectFill" class="arr"/>
+
+        </view>
+    </view>
+</view>
+<view class="bottom_fun">
+        <view class="funbtn">
+            <view class="contact">
+                退出登陆
+            </view>
+        </view>
+</view>

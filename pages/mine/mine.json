@@ -1,3 +1,6 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "navigation-mine":"/components/navigation-mine/navigation-mine"
+    },
+    "navigationStyle": "custom"
 }
