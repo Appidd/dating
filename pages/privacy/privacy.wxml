@@ -1,2 +1,114 @@
-<!--pages/privacy/privacy.wxml-->
-<text>pages/privacy/privacy.wxml</text>
+<view class="container">
+    <view class="switch_box">
+        <view class="switch_item">
+            <view>
+                仅展示姓氏
+            </view>
+            <van-switch checked="{{ checked1 }}" bind:change="onChange1" active-color="#020202" />
+        </view>
+        <view class="line">
+
+        </view>
+        <view class="switch_item">
+            <view>
+                公开联系方式
+            </view>
+            <van-switch checked="{{ checked2 }}" bind:change="onChange2" active-color="#020202" />
+        </view>
+        <view class="line">
+
+        </view>
+        <view class="switch_item">
+            <view>
+                公开年收入
+            </view>
+            <van-switch checked="{{ checked3 }}" bind:change="onChange3" active-color="#020202" />
+        </view>
+        <view class="line">
+
+        </view>
+        <view class="switch_item">
+            <view>
+                公开家庭背景
+            </view>
+            <van-switch checked="{{ checked4 }}" bind:change="onChange4" active-color="#020202" />
+        </view>
+    </view>
+    <view class="title_type bold">
+        <image src="/static/images/icon/canLook.png" mode="aspectFill" class="look" />
+        <view style="margin-left: 32rpx;">
+            谁可以看
+        </view>
+    </view>
+    <view class="between_box bold">
+        <view>
+            年龄段
+        </view>
+        <view>
+            {{beginAge}} - {{endAge}}
+        </view>
+    </view>
+    <view style="margin-top: 46rpx;">
+        <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge" bar-height='4' active-color="#000" min="16" max="60">
+
+        </van-slider>
+    </view>
+
+    <view class="between_box bold" style="margin-top: 58rpx;">
+        <view>
+            身高范围
+        </view>
+        <view>
+            {{lowHeight}} - {{higHeight}} (cm)
+        </view>
+    </view>
+    <view style="margin-top: 46rpx;">
+        <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight" bar-height='4' active-color="#000" min="150" max="196">
+
+        </van-slider>
+    </view>
+   <view class="education_region">
+    <view class="region_item">
+        <view class="title bold">
+            学历
+        </view>
+        <view class="choose_box">
+            <view>
+                本科
+            </view>
+            <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+        </view>
+    </view>
+
+    <view class="region_item">
+        <view class="title bold">
+            地区
+        </view>
+        <view class="choose_box">
+            <view>
+                选择地区
+            </view>
+            <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+        </view>
+    </view>
+   </view>
+
+   <view class="title_type bold">
+        <image src="/static/images/icon/cantLook.png" mode="aspectFill" class="look" />
+        <view style="margin-left: 32rpx;">
+            不给谁看
+        </view>
+    </view>
+    <input model:value="{{contact}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <view style="height: 200rpx;">
+
+    </view>
+</view>
+
+<view class="bottom_fun">
+    <view class="funbtn">
+        <view class="contact">
+            确定
+        </view>
+    </view>
+</view>

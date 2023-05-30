@@ -9,7 +9,8 @@
     "pages/feedback/feedback",
     "pages/report/report",
     "pages/filter/filter",
-    "pages/privacy/privacy"
+    "pages/privacy/privacy",
+    "pages/edit/edit"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -17,7 +17,7 @@
             </view>
         </view>
         <view class="btn_list">
-            <view class="btn_item">
+            <view class="btn_item" bindtap="toEdit">
                 <image src="/static/images/icon/edit.png" mode="" class="btn_icon"/>
                 <view class="btn_name">
                     信息编辑

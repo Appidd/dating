@@ -1,0 +1,182 @@
+<view class="container">
+    <view style="margin-top: 20rpx;">
+        <text class="bold">个人照片</text> <text class="gray_text">({{6}}/6)</text>
+    </view>
+    <view class="img_box">
+        <view class="imgItem" wx:for="{{6}}">
+            <image src="/static/images/icon/bg.jpg" mode="aspectFill" />
+        </view>
+    </view>
+    <view class="title_type ">
+
+        <text class="bold">姓名</text> <text class="gray_text">(输入真实姓名，不可修改)</text>
+    </view>
+    <input model:value="{{userName}}" placeholder="请输入姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <view style="margin-top: 48rpx;" class="title bold require">
+        性别
+    </view>
+    <view class="sex_list">
+        <view wx:for="{{sex_list}}" class="sexItem {{item.checked?'sexchecked':'sexdefault'}}">
+            <image src="{{item.checked?item.checkedUrl:item.defaultUrl}}" mode="aspectFill" />
+            <view>
+                {{item.value}}
+            </view>
+        </view>
+    </view>
+    <view class="education_region">
+        <view class="region_item">
+            <view class="title bold require">
+                年龄
+            </view>
+            <view class="choose_box">
+                <view>
+                    22
+                </view>
+                <!-- <image src="/static/images/icon/downArrow.png" mode="aspectFill" /> -->
+            </view>
+        </view>
+
+        <view class="region_item">
+            <view class="title bold require">
+                生肖
+            </view>
+            <view class="choose_box">
+                <view>
+                    兔
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+
+
+
+    <view class="education_region">
+        <view class="region_item">
+            <view class="title bold require">
+                身高
+            </view>
+            <view class="choose_box">
+                <view>
+                    170cm
+                </view>
+
+            </view>
+        </view>
+
+        <view class="region_item">
+            <view class="title bold ">
+                星座
+            </view>
+            <view class="choose_box">
+                <view>
+                    是在座
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+
+    <view class="education_region">
+        <view class="region_item">
+            <view class="title bold require">
+                体重
+            </view>
+            <view class="choose_box">
+                <view>
+                    50kg
+                </view>
+
+            </view>
+        </view>
+
+        <view class="region_item">
+            <view class="title bold ">
+                学历
+            </view>
+            <view class="choose_box">
+                <view>
+                    本科
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+
+    <view class="education_region">
+        <view class="region_item">
+            <view class="title bold require">
+                区域
+            </view>
+            <view class="choose_box">
+                <view>
+                    选择地区
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+
+        <view class="region_item">
+            <view class="title bold require">
+                现居
+            </view>
+            <view class="choose_box">
+                <view>
+                    选择现居
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+    
+    <view class="education_region">
+        <view class="region_item">
+            <view class="title bold require">
+                所处行业
+            </view>
+            <view class="choose_box">
+                <view>
+                    请填写所处行业
+                </view>
+                <!-- <image src="/static/images/icon/downArrow.png" mode="aspectFill" /> -->
+            </view>
+        </view>
+
+        <view class="region_item">
+            <view class="title bold require">
+                年收入
+            </view>
+            <view class="choose_box">
+                <view>
+                    10W一下
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+    <view class="title_type ">
+
+<text class="bold require ">微信号</text> <text class="gray_text">(默认不公开)</text>
+</view>
+
+    <input model:value="{{contact}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <view style="margin-top: 48rpx;">
+        <text class="bold">家人闲坐,灯火可亲</text> 
+    </view>
+    <textarea model:value="{{opinion}}" placeholder="分享你独特的生活角落吧。家庭背景&成员，让TA更了解你" class="text_area" placeholder-class="placeholder" />
+    <view style="margin-top: 48rpx;">
+        <text class="bold">门当户对,恩爱加倍</text> 
+    </view>
+    <textarea model:value="{{opinion}}" placeholder="浪漫固然重要 但真诚更胜一筹。填写你的兴趣爱好&择偶标准吧" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
+    <view style="height: 200rpx;">
+
+    </view>
+</view>
+
+<view class="bottom_fun">
+    <view class="funbtn">
+        <view class="contact">
+            提交
+        </view>
+    </view>
+</view>

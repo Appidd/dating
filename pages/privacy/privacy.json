@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "van-slider": "@vant/weapp/slider/index",
+        "van-switch": "@vant/weapp/switch/index"
+    },
+    "navigationBarTitleText": "隐私设置"
 }

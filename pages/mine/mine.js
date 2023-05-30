@@ -51,14 +51,18 @@ Page({
         })
     },
     toPrivce(){
-        wx.showToast({
-          title: '开发中',
-          icon:'none'
-        })
+       wx.navigateTo({
+         url: '/pages/privacy/privacy',
+       })
     },
     toGroup(){
         wx.navigateTo({
           url: '/pages/group/group',
+        })
+    },
+    toEdit(){
+        wx.navigateTo({
+          url: '/pages/edit/edit',
         })
     },
     /**
