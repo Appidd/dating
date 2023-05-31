@@ -2,13 +2,16 @@
     <view style="margin-top: 20rpx;">
         <text class="bold">个人照片</text> <text class="gray_text">({{6}}/6)</text>
     </view>
+    
     <view class="img_box">
-        <view class="imgItem" wx:for="{{6}}">
-            <image src="/static/images/icon/bg.jpg" mode="aspectFill" />
+        <view class="imgItem" wx:for="{{imgList}}">
+            <image src="{{item}}" mode="aspectFill" />
+        </view>
+        <view class="imgItem" bindtap="chooseImg"> 
+            <image src="/static/images/icon/add_icon.png" mode="aspectFill" style=" width: 40rpx;height: 40rpx;" />
         </view>
     </view>
     <view class="title_type ">
-
         <text class="bold">姓名</text> <text class="gray_text">(输入真实姓名，不可修改)</text>
     </view>
     <input model:value="{{userName}}" placeholder="请输入姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />

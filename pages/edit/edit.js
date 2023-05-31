@@ -1,4 +1,5 @@
 // pages/edit/edit.js
+import upFileObj from '../../utils/upFile'
 Page({
 
     /**
@@ -19,6 +20,7 @@ Page({
             defaultUrl:'/static/images/icon/girlnotChecked.png'
         }
     ]
+
     },
 
     /**
@@ -27,7 +29,35 @@ Page({
     onLoad(options) {
 
     },
-
+//上传照片
+chooseImg(){
+    const imgList=this.data.imgList
+    let that=this
+    wx.chooseImage({
+        count: 9,
+        success: res => {
+            // wx.showLoading({
+            //     title: '',
+            // })
+            const fileList = res.tempFilePaths
+            console.log(fileList)
+            const newList=imgList.concat(fileList)
+            that.setData({
+                imgList:newList
+            })
+            // const uploadTasks = fileList.map((file) => upFileObj.uploadFilePromiseInsert(file));
+            // Promise.all(uploadTasks).then(imgList => {
+            //     console.log(imgList)
+            // }).catch(err => {
+            //     wx.hideLoading()
+            //     wx.showToast({
+            //         title: '上传失败',
+            //         icon: 'error'
+            //     })
+            // })
+        }
+    })
+},
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
