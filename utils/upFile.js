@@ -1,4 +1,4 @@
-let uploadUrl=''
+let uploadUrl='http://101.35.179.187:5230/up/avatar'
  const upFileObj={
 // 选择图片并上传，编辑页面插入图片
 uploadFilePromiseInsert(filePath){

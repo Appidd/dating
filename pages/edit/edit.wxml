@@ -19,7 +19,7 @@
         性别
     </view>
     <view class="sex_list">
-        <view wx:for="{{sex_list}}" class="sexItem {{item.checked?'sexchecked':'sexdefault'}}">
+        <view wx:for="{{sex_list}}" class="sexItem {{item.checked?'sexchecked':'sexdefault'}}" bindtap="chooseSex" data-index="{{index}}">
             <image src="{{item.checked?item.checkedUrl:item.defaultUrl}}" mode="aspectFill" />
             <view>
                 {{item.value}}
@@ -32,24 +32,23 @@
                 年龄
             </view>
             <view class="choose_box">
-                <view>
-                    22
-                </view>
-                <!-- <image src="/static/images/icon/downArrow.png" mode="aspectFill" /> -->
+                <input type="text" placeholder="请输入您的年龄" class="choose_box" model:value="{{age}}" type="number"/>
             </view>
         </view>
-
+       <picker mode="selector" range="{{chineseZodiacList}}" bindchange="chineseZodiac"> 
         <view class="region_item">
             <view class="title bold require">
                 生肖
             </view>
             <view class="choose_box">
                 <view>
-                    兔
+                    {{zodiac}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
         </view>
+       </picker>
+       
     </view>
 
 

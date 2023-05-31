@@ -6,21 +6,24 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgList:['/static/images/icon/bg.jpg'],
-        sex_list:[{
-            checked:true,
-            value:'男',
-            checkedUrl:'/static/images/icon/boyChecked.png',
-            defaultUrl:'/static/images/icon/boynotChecked.png'
-        },
-        {
-            checked:false,
-            value:'女',
-            checkedUrl:'/static/images/icon/girlChecked.png',
-            defaultUrl:'/static/images/icon/girlnotChecked.png'
-        }
-    ]
-
+        imgList: ['/static/images/icon/bg.jpg'],
+        sex_list: [{
+                checked: true,
+                value: '男',
+                checkedUrl: '/static/images/icon/boyChecked.png',
+                defaultUrl: '/static/images/icon/boynotChecked.png'
+            },
+            {
+                checked: false,
+                value: '女',
+                checkedUrl: '/static/images/icon/girlChecked.png',
+                defaultUrl: '/static/images/icon/girlnotChecked.png'
+            }
+        ],
+        sex:0,
+        age:20,
+        chineseZodiacList:['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪'],
+        zodiac:'鼠'
     },
 
     /**
@@ -29,35 +32,57 @@ Page({
     onLoad(options) {
 
     },
-//上传照片
-chooseImg(){
-    const imgList=this.data.imgList
-    let that=this
-    wx.chooseImage({
-        count: 9,
-        success: res => {
-            // wx.showLoading({
-            //     title: '',
-            // })
-            const fileList = res.tempFilePaths
-            console.log(fileList)
-            const newList=imgList.concat(fileList)
-            that.setData({
-                imgList:newList
-            })
-            // const uploadTasks = fileList.map((file) => upFileObj.uploadFilePromiseInsert(file));
-            // Promise.all(uploadTasks).then(imgList => {
-            //     console.log(imgList)
-            // }).catch(err => {
-            //     wx.hideLoading()
-            //     wx.showToast({
-            //         title: '上传失败',
-            //         icon: 'error'
-            //     })
-            // })
-        }
-    })
-},
+    // 选择生肖
+    chineseZodiac(e){
+        const index=parseInt(e.detail.value)
+        const zodiac=this.data.chineseZodiacList[index]
+        this.setData({
+            zodiac
+        })
+
+    },
+    // 选择性别
+    chooseSex(e) {
+        const index = e.currentTarget.dataset.index
+        const sex_list = this.data.sex_list
+        sex_list.forEach(item => {
+            item.checked = false
+        })
+        sex_list[index].checked = true
+        this.setData({
+            sex_list,
+            sex:index
+        })
+    },
+    //上传照片
+    chooseImg() {
+        const imgList = this.data.imgList
+        let that = this
+        wx.chooseImage({
+            count: 9,
+            success: res => {
+                // wx.showLoading({
+                //     title: '',
+                // })
+                const fileList = res.tempFilePaths
+                console.log(fileList)
+                const newList = imgList.concat(fileList)
+                that.setData({
+                    imgList: newList
+                })
+                const uploadTasks = fileList.map((file) => upFileObj.uploadFilePromiseInsert(file));
+                Promise.all(uploadTasks).then(imgList => {
+                    console.log(imgList)
+                }).catch(err => {
+                    wx.hideLoading()
+                    wx.showToast({
+                        title: '上传失败',
+                        icon: 'error'
+                    })
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
