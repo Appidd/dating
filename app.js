@@ -12,19 +12,21 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
+   
+  },
+  login(){
+       // 登录
     wx.login({
-      success: res => {
-          console.log(res)
-          const code=res.code
-          Api.userLogin({code}).then(e=>{
-              console.log(e)
-          }).catch(err=>{
-              console.log(err)
-          })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+        success: res => {
+            Api.userLogin({code:res.code}).then(e=>{
+                console.log(e)
+                storage.set('token',e.token)  
+            }).catch(err=>{
+                console.log(err)
+            })
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        }
+      })
   },
   isLogin() {
     return storage.get('token') ? true : false

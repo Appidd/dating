@@ -43,3 +43,31 @@ letter-spacing: 4rpx;
 }
 
 
+.mask{
+    height: 100%;
+    width: 702rpx;
+    background-color: gold;
+    background: rgba(204,204,204,0.8);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     color: #fff;
+     font-size: 32rpx;
+     position: absolute;
+}
+.login_btn{
+    width: 200rpx;
+
+background: rgba(255,255,255,0.8);
+border-radius: 80rpx 80rpx 80rpx 80rpx;
+opacity: 1;
+line-height: 70rpx;
+color: #202020;
+font-size: 28rpx;
+text-align: center;
+margin-top: 96rpx;
+}
+.need_login_box{
+    
+}

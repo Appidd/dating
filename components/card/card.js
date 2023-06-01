@@ -1,5 +1,5 @@
 // components/card/card.js
-const app=getApp()
+const app = getApp()
 Component({
     /**
      * 组件的属性列表
@@ -15,7 +15,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        
+        isLogin: app.isLogin()
     },
 
     /**
@@ -23,15 +23,21 @@ Component({
      */
     lifetimes: {
         attached() {
-           
+
         }
     },
     methods: {
-        toDetail(){
-            app.globalData.itemObj=this.data.item
+        toDetail() {
+            app.globalData.itemObj = this.data.item
             wx.navigateTo({
-              url: '/pages/detail/detail',
+                url: '/pages/detail/detail',
             })
         },
+        toLogin(e) {
+            app.login()
+            this.setData({
+                isLogin:true
+            })
+        }
     }
 })

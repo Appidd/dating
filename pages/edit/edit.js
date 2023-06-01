@@ -65,11 +65,11 @@ Page({
                 //     title: '',
                 // })
                 const fileList = res.tempFilePaths
-                console.log(fileList)
-                const newList = imgList.concat(fileList)
-                that.setData({
-                    imgList: newList
-                })
+                // console.log(fileList)
+                // const newList = imgList.concat(fileList)
+                // that.setData({
+                //     imgList: newList
+                // })
                 const uploadTasks = fileList.map((file) => upFileObj.uploadFilePromiseInsert(file));
                 Promise.all(uploadTasks).then(imgList => {
                     console.log(imgList)

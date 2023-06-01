@@ -1,3 +1,4 @@
+const app=getApp()
 Page({
 
   /**
@@ -33,7 +34,8 @@ Page({
             about:['编程     发财','刷剧、购物、旅游','不抽烟，身高170以上，温柔，私生活干净，阳光开朗'],
             coverImg:'/static/images/icon/bg.jpg'
         }
-    ]
+    ],
+    isLogin:false
   },
 
 
@@ -41,7 +43,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+        hasLogin:app.isLogin()
+    })
   },
   getMore(){
 wx.showToast({
