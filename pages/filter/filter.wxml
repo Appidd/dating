@@ -4,11 +4,11 @@
             年龄段
         </view>
         <view>
-            {{beginAge}} - {{endAge}}
+            {{age_start}} - {{age_end}}
         </view>
     </view>
    <view style="margin-top: 46rpx;">
-    <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge"  bar-height='4' active-color="#000" min="16" max="60">
+    <van-slider value="{{ [age_start, age_end] }}" range bind:change="onChangeAge"  bar-height='4' active-color="#000" min="18" max="60">
     
     </van-slider>
    </view>
@@ -18,50 +18,60 @@
             身高范围
         </view>
         <view>
-            {{lowHeight}} - {{higHeight}} (cm)
+            {{height_start}} - {{height_end}} (cm)
         </view>
     </view>
    <view style="margin-top: 46rpx;">
-    <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight"  bar-height='4' active-color="#000" min="150" max="196">
+    <van-slider value="{{ [height_start, height_end] }}" range bind:change="onChangeHeight"  bar-height='4' active-color="#000" min="140" max="200">
     
     </van-slider>
    </view>
    <view class="title bold">
     性别
    </view>
-   <view class="choose_box">
+   <picker mode="selector" range="{{sexList}}" bindchange="choosesex"> 
+    <view class="choose_box">
        <view>
-        不限
+        {{sex==1?'男':'女'}}
        </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>
+       </picker>
+  
    <view class="title bold">
     学历
    </view>
-   <view class="choose_box">
-       <view>
-        本科
-       </view>
+   <picker mode="selector" range="{{educationList}}" bindchange="chooseeducation"> 
+
+        <view class="choose_box">
+            <view>
+                    {{edu==0?'小学':edu==1?'初中':edu==2?'高中':edu==3?'大专':edu==4?'本科':edu==5?'硕士':'博士'}}
+                </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>
+       </picker>
+  
    <view class="title bold">
     地区
    </view>
-   <view class="choose_box">
+   <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
+    <view class="choose_box">
        <view>
-        选择地区
+       {{area}}
        </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>
+       </picker>
+  
 </view>
 <view class="reset">
         <view class="restbtn">
-            <view class="restcontact">
+            <view class="restcontact" bindtap="reset">
                 重置
             </view>
         </view>
 </view>
-<view class="bottom_fun">
+<view class="bottom_fun" bindtap="submit">
         <view class="funbtn">
             <view class="contact">
                 确定

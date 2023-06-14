@@ -19,7 +19,6 @@ App({
     wx.login({
         success: res => {
             Api.userLogin({code:res.code}).then(e=>{
-                console.log(e)
                 storage.set('token',e.token)  
             }).catch(err=>{
                 console.log(err)

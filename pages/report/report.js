@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        fileList:[],
         textNum:0,
         typeList:[{
             id:1,
@@ -46,7 +47,9 @@ Page({
             checked:false,
             value:'其他'
         }
-    ]
+    ],
+    describe:'',
+    r_uid:''
     },
 
     /**
@@ -74,6 +77,77 @@ Page({
         const cursor=e.detail.cursor
         this.setData({
             textNum:cursor
+        })
+    },
+    chooseImage(e){
+        const {file}=e.detail
+        this.setData({
+            fileList:[{...file}]
+        })
+    },
+    deleteImg(e){
+        this.setData({
+            fileList:[]
+        })
+    },
+    submit(){
+        const that=this
+        const {describe,typeList,r_uid}=this.data
+        let tempFilePath=''
+        console.log(typeList)
+        if(this.data.fileList[0]){
+            tempFilePath=this.data.fileList[0].tempFilePath
+        }
+         let type=''
+         typeList.forEach(e=>{
+             if(e.checked){
+                type=type+e.value+';'
+             }
+         })
+        
+        if(tempFilePath==''){
+            wx.showToast({
+              title: '请上传图片',
+              icon:'error'
+            })
+            return
+        }
+        wx.showLoading({
+          title: '提交中',
+        })
+       const uploadUrl='https://101.35.179.187:5230/up/report'
+        wx.uploadFile({
+            url: uploadUrl,
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            filePath: tempFilePath,
+            formData: {
+              r_uid,
+              "q_uid": wx.getStorageSync('uid'),
+              type,
+              describe,
+              "file-1":tempFilePath,
+            },
+            name: "file",
+            success:res=>{
+                wx.hideLoading()
+                wx.showToast({
+                  title: '举报成功',
+                })
+                setTimeout(e=>{
+                    wx.navigateBack()
+                },1000)
+              
+            },
+            fail:err=>{
+                wx.hideLoading()
+                wx.showToast({
+                    title: '举报失败',
+                    icon:'error'
+                  })
+
+            }
         })
     },
     /**

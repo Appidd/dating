@@ -4,7 +4,7 @@
         <scroll-view class="scroll_box"  style="display: flex;" scroll-x="{{true}}"    paging-enabled enable-flex enhanced bindscrolltolower='getMore'>
             
             <view style="display: flex;height: 100%;">
-               <card item="{{item}}" wx:for="{{list}}"></card>
+               <card item="{{item}}" wx:for="{{list}}" isLogin="{{isLogin}}"></card>
             </view>
             
         </scroll-view>

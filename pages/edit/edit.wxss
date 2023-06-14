@@ -46,7 +46,7 @@
 .imgItem image {
     width: 196rpx;
     height: 240rpx;
-    background: #F4F4F4;
+
     border-radius: 8rpx 8rpx 8rpx 8rpx;
     opacity: 1;
 }
@@ -91,7 +91,12 @@
     right: 10rpx;
     /* transform: translate(50%,50%); */
 }
-
+.delete_img{
+    position: absolute;
+    width: 80rpx !important;
+    height: 80rpx !important;
+    
+}
 .bottom_fun {
     width: 100%;
     background-color: #fff;

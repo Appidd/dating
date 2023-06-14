@@ -10,7 +10,8 @@
     "pages/report/report",
     "pages/filter/filter",
     "pages/privacy/privacy",
-    "pages/edit/edit"
+    "pages/edit/edit",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -38,5 +39,8 @@
     ]
 },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-uploader": "@vant/weapp/uploader/index"
+  }
 }

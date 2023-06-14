@@ -1,56 +1,182 @@
 // pages/privacy/privacy.js
+import * as storage from '../../utils/storage.js'
+import upFileObj from '../../utils/upFile'
+// 调用登录接口
+import {
+    api
+} from '../../models/api.js';
+const Api = new api()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        beginAge:20,
-        endAge:26,
-        lowHeight:156,
-        higHeight:173,
-        checked1: true,
-        checked2: true,
-        checked3: false,
-        checked4: true,
+        age_start: 22,
+        age_end: 34,
+        height_start: 156,
+        height_end: 178,
+        beginAge: 20,
+        endAge: 26,
+        show_name: 1,
+        open_tel: 1,
+        open_income: 0,
+        open_family: 1,
+        educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
+        see_edu: 0,
+        areaList: ['选择地区', '汕头', '潮州', '揭阳'],
+        see_area: '选择地区',
+        see_not: ''
+    },
+    //选择学历
+    chooseeducation(e) {
+        const index = parseInt(e.detail.value)
+        this.setData({
+            see_edu: index
+        })
+    },
+    //选择地区
+    chooseArea(e) {
+        const index = parseInt(e.detail.value)
+        const see_area = this.data.areaList[index]
+        this.setData({
+            see_area
+        })
     },
     onChangeAge(event) {
-        const beginAge=event.detail[0]
-        const endAge=event.detail[1]
+        const age_end = event.detail[0]
+        const age_start = event.detail[1]
         this.setData({
-            beginAge,
-            endAge
+            age_start,
+            age_end
         })
-      },
-      onChangeHeight(event){
-        const lowHeight=event.detail[0]
-        const higHeight=event.detail[1]
+    },
+    onChangeHeight(event) {
+        const height_start = event.detail[0]
+        const height_end = event.detail[1]
+
         this.setData({
-            lowHeight,
-            higHeight
+            height_start,
+            height_end
         })
-      },
-      onChange1({ detail }) {
+    },
+    onChange1({
+        detail
+    }) {
         // 需要手动对 checked 状态进行更新
-        this.setData({ checked1: detail });
-      },
-      onChange2({ detail }) {
+        this.setData({
+            show_name: detail?1:0
+        });
+    },
+    onChange2({
+        detail
+    }) {
         // 需要手动对 checked 状态进行更新
-        this.setData({ checked2: detail });
-      },
-      onChange3({ detail }) {
+        this.setData({
+            open_tel: detail?1:0
+        });
+    },
+    onChange3({
+        detail
+    }) {
         // 需要手动对 checked 状态进行更新
-        this.setData({ checked3: detail });
-      },
-      onChange4({ detail }) {
+        this.setData({
+            open_income: detail?1:0
+        });
+    },
+    onChange4({
+        detail
+    }) {
         // 需要手动对 checked 状态进行更新
-        this.setData({ checked4: detail });
-      },
+        this.setData({
+            open_family: detail?1:0
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const that=this
+     Api.getPrivacy().then(res=>{
+       let  {show_name,
+            open_tel,
+            open_income,
+            open_family,
+            see_edu,
+            see_area,
+            see_not,
+            height_end,
+            height_start,
+            age_start,
+            age_end}=res.data
+            show_name=parseInt(show_name)
+            open_tel=parseInt(open_tel)
+            open_income=parseInt(open_income)
+            open_family=parseInt(open_family)
+            height_end=parseInt(height_end)
+            height_start=parseInt(height_start)
+            age_start=parseInt(age_start)
+            age_end=parseInt(age_end)
+            that.setData({
+                show_name,
+            open_tel,
+            open_income,
+            open_family,
+            see_edu,
+            see_area,
+            see_not,
+            height_end,
+            height_start,
+            age_start,
+            age_end
+            })
+        
+     }).catch(err=>{
+    console.log(err)     
+    })
+    },
+    submit() {
+        console.log(this.data.open_family)
+        wx.showLoading({
+            title: '正在保存',
+        })
+        const {
+            show_name,
+            open_tel,
+            open_income,
+            open_family,
+            see_edu,
+            see_area,
+            see_not,
+            height_end,
+            height_start,
+            age_start,
+            age_end
+        } = this.data
+        Api.setPrivacy({
+            show_name,
+            open_tel,
+            open_income,
+            open_family,
+            see_edu,
+            see_area,
+            see_not,
+            height_end,
+            height_start,
+            age_start,
+            age_end
+        }).then(res => {
+            wx.hideLoading()
+            wx.showToast({
+                title: '保存成功',
+            })
+        }).catch(err => {
+            wx.hideLoading()
+            wx.showToast({
+                title: '保存失败',
+                icon: 'error'
+            })
+        })
     },
 
     /**

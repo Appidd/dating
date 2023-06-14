@@ -1,20 +1,21 @@
 <view class="container">
     <view style="margin-top: 20rpx;">
-        <text class="bold">个人照片</text> <text class="gray_text">({{6}}/6)</text>
+        <text class="bold">个人照片</text> <text class="gray_text">({{imgList.length}}/6)</text>
     </view>
     
     <view class="img_box">
-        <view class="imgItem" wx:for="{{imgList}}">
-            <image src="{{item}}" mode="aspectFill" />
+        <view class="imgItem" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="delete" data-index="{{index}}">
+            <image src="/static/images/icon/shanchu.png" alt="" class="delete_img" />
+            <image src="{{item}}" mode="aspectFill"  />
         </view>
-        <view class="imgItem" bindtap="chooseImg"> 
+        <view class="imgItem" bindtap="chooseImg" wx:if="{{imgList.length<6}}"> 
             <image src="/static/images/icon/add_icon.png" mode="aspectFill" style=" width: 40rpx;height: 40rpx;" />
         </view>
     </view>
     <view class="title_type ">
         <text class="bold">姓名</text> <text class="gray_text">(输入真实姓名，不可修改)</text>
     </view>
-    <input model:value="{{userName}}" placeholder="请输入姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <input model:value="{{real_name}}" placeholder="请输入姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
     <view style="margin-top: 48rpx;" class="title bold require">
         性别
     </view>
@@ -42,7 +43,7 @@
             </view>
             <view class="choose_box">
                 <view>
-                    {{zodiac}}
+                    {{animals}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
@@ -59,24 +60,23 @@
                 身高
             </view>
             <view class="choose_box">
-                <view>
-                    170cm
-                </view>
-
+                <input type="text" placeholder="请输入您的身高（cm）" class="choose_box" model:value="{{height}}" type="number"/>
             </view>
         </view>
 
+        <picker mode="selector" range="{{constellationList}}" bindchange="chineseConstellation"> 
         <view class="region_item">
-            <view class="title bold ">
+            <view class="title bold require">
                 星座
             </view>
             <view class="choose_box">
                 <view>
-                    是在座
+                    {{constellation}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
         </view>
+       </picker>
     </view>
 
     <view class="education_region">
@@ -85,50 +85,57 @@
                 体重
             </view>
             <view class="choose_box">
-                <view>
-                    50kg
-                </view>
-
+                <input type="text" placeholder="请输入您的体重（kg）" class="choose_box" model:value="{{weight}}" type="number"/>
             </view>
         </view>
 
+
+        <picker mode="selector" range="{{educationList}}" bindchange="chooseeducation"> 
         <view class="region_item">
-            <view class="title bold ">
+            <view class="title bold require">
                 学历
             </view>
             <view class="choose_box">
                 <view>
-                    本科
+                    {{education==0?'小学':education==1?'初中':education==2?'高中':education==3?'大专':education==4?'本科':education==5?'硕士':'博士'}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
         </view>
+       </picker>
+       
     </view>
 
+
+    
     <view class="education_region">
-        <view class="region_item">
+        <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
             <view class="title bold require">
                 区域
             </view>
             <view class="choose_box">
                 <view>
-                    选择地区
+                    {{area}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
-        </view>
+       </picker>
+        
 
+       <picker mode="selector" range="{{nowAreaList}}" bindchange="chooseNowArea"> 
         <view class="region_item">
             <view class="title bold require">
                 现居
             </view>
             <view class="choose_box">
                 <view>
-                    选择现居
+                    {{now_area}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
         </view>
+       </picker>
+       
     </view>
     
     <view class="education_region">
@@ -137,10 +144,7 @@
                 所处行业
             </view>
             <view class="choose_box">
-                <view>
-                    请填写所处行业
-                </view>
-                <!-- <image src="/static/images/icon/downArrow.png" mode="aspectFill" /> -->
+                <input type="text" placeholder="请填写所属行业" class="choose_box" model:value="{{industry}}"/>
             </view>
         </view>
 
@@ -149,10 +153,9 @@
                 年收入
             </view>
             <view class="choose_box">
-                <view>
-                    10W一下
-                </view>
-                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+                <view class="choose_box">
+                <input type="text" placeholder="10w以下" class="choose_box" model:value="{{income}}"/>
+            </view>
             </view>
         </view>
     </view>
@@ -161,15 +164,15 @@
 <text class="bold require ">微信号</text> <text class="gray_text">(默认不公开)</text>
 </view>
 
-    <input model:value="{{contact}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <input model:value="{{wechat}}" placeholder="输入微信号" class="contact_area" placeholder-class="placeholder" maxlength="200" />
     <view style="margin-top: 48rpx;">
         <text class="bold">家人闲坐,灯火可亲</text> 
     </view>
-    <textarea model:value="{{opinion}}" placeholder="分享你独特的生活角落吧。家庭背景&成员，让TA更了解你" class="text_area" placeholder-class="placeholder" />
+    <textarea model:value="{{family}}" placeholder="分享你独特的生活角落吧。家庭背景&成员，让TA更了解你" class="text_area" placeholder-class="placeholder" />
     <view style="margin-top: 48rpx;">
         <text class="bold">门当户对,恩爱加倍</text> 
     </view>
-    <textarea model:value="{{opinion}}" placeholder="浪漫固然重要 但真诚更胜一筹。填写你的兴趣爱好&择偶标准吧" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
+    <textarea model:value="{{hobby}}" placeholder="浪漫固然重要 但真诚更胜一筹。填写你的兴趣爱好&择偶标准吧" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
     <view style="height: 200rpx;">
 
     </view>
@@ -177,7 +180,7 @@
 
 <view class="bottom_fun">
     <view class="funbtn">
-        <view class="contact">
+        <view class="contact" bindtap="submit">
             提交
         </view>
     </view>

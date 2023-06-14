@@ -30,21 +30,10 @@ font-size: 24rpx;
     font-size: 24rpx;
     color: #979797;
 }
-.add_img{
+.van-uploader{
     margin-top: 32rpx;
-    width: 160rpx;
-height: 160rpx;
-background: #F4F4F4;
-border-radius: 8rpx 8rpx 8rpx 8rpx;
-opacity: 1;
-display: flex;
-justify-content: center;
-align-items: center;
 }
-.add_img .add_icon{
-height: 40rpx;
-width: 40rpx;
-}
+
 .contact_area{
     margin-top: 32rpx;
     width: 100%;

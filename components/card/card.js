@@ -8,6 +8,10 @@ Component({
         item: {
             type: Object,
             value: {}
+        },
+        isLogin: {
+            type:Boolean,
+            value:false
         }
     },
 
@@ -15,7 +19,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        isLogin: app.isLogin()
+        
     },
 
     /**
@@ -23,7 +27,10 @@ Component({
      */
     lifetimes: {
         attached() {
-
+        console.log(222)
+        },
+        detached(){
+            console.log(111)
         }
     },
     methods: {
@@ -34,10 +41,9 @@ Component({
             })
         },
         toLogin(e) {
-            app.login()
-            this.setData({
-                isLogin:true
-            })
+           wx.navigateTo({
+             url: '/pages/login/login',
+           })
         }
     }
 })

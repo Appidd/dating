@@ -4,7 +4,7 @@
             <view>
                 仅展示姓氏
             </view>
-            <van-switch checked="{{ checked1 }}" bind:change="onChange1" active-color="#020202" />
+            <van-switch checked="{{ show_name?true:false }}" bind:change="onChange1" active-color="#020202" />
         </view>
         <view class="line">
 
@@ -13,7 +13,7 @@
             <view>
                 公开联系方式
             </view>
-            <van-switch checked="{{ checked2 }}" bind:change="onChange2" active-color="#020202" />
+            <van-switch checked="{{ open_tel?true:false }}" bind:change="onChange2" active-color="#020202" />
         </view>
         <view class="line">
 
@@ -22,7 +22,7 @@
             <view>
                 公开年收入
             </view>
-            <van-switch checked="{{ checked3 }}" bind:change="onChange3" active-color="#020202" />
+            <van-switch checked="{{ open_income?true:false }}" bind:change="onChange3" active-color="#020202" />
         </view>
         <view class="line">
 
@@ -31,7 +31,7 @@
             <view>
                 公开家庭背景
             </view>
-            <van-switch checked="{{ checked4 }}" bind:change="onChange4" active-color="#020202" />
+            <van-switch checked="{{ open_family?true:false }}" bind:change="onChange4" active-color="#020202" />
         </view>
     </view>
     <view class="title_type bold">
@@ -45,11 +45,11 @@
             年龄段
         </view>
         <view>
-            {{beginAge}} - {{endAge}}
+            {{age_start}} - {{age_end}}
         </view>
     </view>
     <view style="margin-top: 46rpx;">
-        <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge" bar-height='4' active-color="#000" min="16" max="60">
+        <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge" bar-height='4' active-color="#000" min="18" max="60">
 
         </van-slider>
     </view>
@@ -59,38 +59,40 @@
             身高范围
         </view>
         <view>
-            {{lowHeight}} - {{higHeight}} (cm)
+            {{height_start}} - {{height_end}}
         </view>
     </view>
     <view style="margin-top: 46rpx;">
-        <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight" bar-height='4' active-color="#000" min="150" max="196">
+        <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight" bar-height='4' active-color="#000" min="140" max="200">
 
         </van-slider>
     </view>
    <view class="education_region">
-    <view class="region_item">
-        <view class="title bold">
-            学历
-        </view>
-        <view class="choose_box">
-            <view>
-                本科
+    <picker mode="selector" range="{{educationList}}" bindchange="chooseeducation"> 
+        <view class="region_item">
+            <view class="title bold require">
+                学历
             </view>
-            <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            <view class="choose_box">
+                <view>
+                    {{see_edu==0?'小学':see_edu==1?'初中':see_edu==2?'高中':see_edu==3?'大专':see_edu==4?'本科':see_edu==5?'硕士':'博士'}}
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
         </view>
-    </view>
+       </picker>
 
-    <view class="region_item">
-        <view class="title bold">
-            地区
-        </view>
-        <view class="choose_box">
-            <view>
-                选择地区
+       <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
+            <view class="title bold require">
+                区域
             </view>
-            <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
-        </view>
-    </view>
+            <view class="choose_box">
+                <view>
+                    {{see_area}}
+                </view>
+                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+            </view>
+       </picker>
    </view>
 
    <view class="title_type bold">
@@ -99,7 +101,7 @@
             不给谁看
         </view>
     </view>
-    <input model:value="{{contact}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <input model:value="{{see_not}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
     <view style="height: 200rpx;">
 
     </view>
@@ -107,7 +109,7 @@
 
 <view class="bottom_fun">
     <view class="funbtn">
-        <view class="contact">
+        <view class="contact" bindtap="submit">
             确定
         </view>
     </view>

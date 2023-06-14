@@ -39,7 +39,9 @@ color: #979797;
     color: #979797;
     font-size: 24rpx;
 }
-
+.van-uploader{
+    margin-top: 32rpx;
+}
 .text_area {
     margin-top: 32rpx;
     width: 100%;

@@ -19,3 +19,21 @@ swiper .wx-swiper-dots .wx-swiper-dot{
     /* height: 10rpx; */
     pointer-events:none;
   }
+  /**app.wxss**/
+.container1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  } 
+  .flex_center_align{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  page {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
