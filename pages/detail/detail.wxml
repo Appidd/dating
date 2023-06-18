@@ -1,43 +1,36 @@
 <view class="container">
-    <image src="/static/images/icon/bg.jpg" mode="aspectFill" class="imgs" />
+    <image src="{{itemObj.photo_url||'/static/images/icon/bg.jpg'}}" mode="aspectFill" class="imgs" />
   
     <view style="padding:0rpx 16rpx">
         <view class="name_age">
-            {{itemObj.name}} <text style="margin-left: 48rpx;">{{itemObj.age}}</text> <text style="margin-left: 48rpx;">{{itemObj.property}}</text> 
+            {{itemObj.real_name}} <text style="margin-left: 48rpx;">{{itemObj.age}}</text> <text style="margin-left: 48rpx;">{{itemObj.animals}}</text> 
         </view>
         <view class="address">
-            来自：{{itemObj.address}}
+            来自：{{itemObj.area}}
         </view>
         <view class="address">
-            现居：{{itemObj.nowLives}}
+            现居：{{itemObj.now_area}}
         </view>
         <view class="tags" >
-            <view class="tag" wx:for="{{itemObj.taglist}}" >
+            <view class="tag" wx:for="{{itemObj.like_list}}" >
                 {{item}}
             </view>
-            
         </view>
         <view class="about_me">
             微信号
         </view>
         <view class="address">
-            Xiao065874
+            {{itemObj.wechat}}
         </view>
-       
-        
         <view class="about_me">
             About
         </view>
         <view class="bg">
-            家庭背景 <text style="margin-left: 32rpx;">有个弟弟</text>
+            家庭背景 <text style="margin-left: 32rpx;">{{itemObj.family}}</text>
         </view>
         <view class="reveng" style="margin-top: 16rpx;">
-            刷剧、购物、旅游
+            {{itemObj.hobby}}
         </view>
-        <view class="reveng" style="margin-top: 16rpx;">
-            不抽烟，身高170以上，温柔，私生活干净，阳光开朗
-        </view>
-       
     </view>
 
     <view style="height: 200rpx;">
@@ -45,7 +38,7 @@
     </view>
 </view>
 <view class="bottom_fun">
-        <view class="funbtn">
+        <view class="funbtn" bindtap="getContact">
             <view class="contact">
                 获取联系
             </view>

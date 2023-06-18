@@ -100,6 +100,54 @@ setFilter(parameterObj){
         method: "POST"
     })
 }
+//匹配列表
+getList(){
+    return this.request({
+        url: baseUrl + '/match/filter',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        method: "GET"
+    })
+}
+//获取联系
+getUserContact(parameterObj){
+    return this.request({
+        url: baseUrl + '/match/like',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        data: parameterObj,
+        method: "POST"
+    })
+}
+//获取匹配列表
+getSeeList(parameterObj){
+    return this.request({
+        url: baseUrl + '/user/like_seek',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        data: parameterObj,
+        method: "GET"
+    })
+}
+//获取请求列表
+getSeekList(parameterObj){
+    return this.request({
+        url: baseUrl + '/user/seek_list',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        data: parameterObj,
+        method: "GET"
+    })
+}
+
 }
 
 export {

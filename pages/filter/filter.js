@@ -81,7 +81,13 @@ Page({
     },
     submit(){
        const {age_start,age_end,height_start,height_end,sex,edu,area}=this.data
-        Api.setFilter({age_start,age_end,height_start,height_end,sex,edu,area}).then(res=>{
+       let areaList=''
+       if(area=='选择地区'){
+        areaList='[]'
+       }else{
+        areaList=[area].toString()
+       }
+        Api.setFilter({age_start,age_end,height_start,height_end,sex,edu,area:areaList}).then(res=>{
          wx.navigateBack()
         }).catch(err=>{
             wx.navigateBack()

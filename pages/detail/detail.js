@@ -1,6 +1,11 @@
 
 // pages/detail/detail.js
 const app=getApp()
+// 调用登录接口
+import {
+    api
+} from '../../models/api.js';
+const Api = new api()
 Page({
 
     /**
@@ -14,6 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options)
         console.log(app.globalData.itemObj)
         this.setData({
             itemObj:app.globalData.itemObj
@@ -28,7 +34,18 @@ Page({
     onReady() {
 
     },
-
+    getContact(){
+        Api.getUserContact({
+            like_uid:this.data.itemObj.uid
+        }).then(res=>{
+            wx.showToast({
+              title: '请求已发送',
+            })
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
+    },
     /**
      * 生命周期函数--监听页面显示
      */

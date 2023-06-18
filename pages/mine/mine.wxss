@@ -23,6 +23,7 @@
 }
 
 .user_avatar {
+    flex-shrink: 0;
     width: 160rpx;
     height: 160rpx;
     border-radius: 50%;
@@ -47,6 +48,11 @@
 }
 
 .user_id {
+    width: 500rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     color: #999999;
     font-size: 28rpx;
     margin-top: 24rpx;

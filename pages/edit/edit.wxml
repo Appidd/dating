@@ -4,8 +4,8 @@
     </view>
     
     <view class="img_box">
-        <view class="imgItem" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="delete" data-index="{{index}}">
-            <image src="/static/images/icon/shanchu.png" alt="" class="delete_img" />
+        <view class="imgItem" wx:for="{{imgList}}" wx:key="{{index}}" >
+            <image src="/static/images/icon/delete.png" alt="" class="delete_img" bindtap="delete" data-index="{{index}}"/>
             <image src="{{item}}" mode="aspectFill"  />
         </view>
         <view class="imgItem" bindtap="chooseImg" wx:if="{{imgList.length<6}}"> 

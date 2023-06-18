@@ -4,7 +4,7 @@
     height: 656rpx;
     border-radius: 32rpx 32rpx 32rpx 32rpx;
     opacity: 1;
-    background-color: gray;
+    /* background-color: gray; */
 }
 
 .name_age {

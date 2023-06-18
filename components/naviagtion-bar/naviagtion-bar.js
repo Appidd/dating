@@ -67,9 +67,15 @@ Component({
         this.triggerEvent('back', { delta: data.delta }, {});
       },
       toFilter(){
-          wx.navigateTo({
-            url: '/pages/filter/filter',
-          })
+          if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/filter/filter',
+              })
+          }else{
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+          }
       },
     },
   });

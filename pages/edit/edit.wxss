@@ -41,6 +41,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .imgItem image {
@@ -92,10 +93,11 @@
     /* transform: translate(50%,50%); */
 }
 .delete_img{
+    top: -5rpx;
+    right: -5rpx;
     position: absolute;
-    width: 80rpx !important;
-    height: 80rpx !important;
-    
+    width: 50rpx !important;
+    height: 50rpx !important;
 }
 .bottom_fun {
     width: 100%;

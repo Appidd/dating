@@ -14,16 +14,16 @@
    
         <view class="name_age_intro">
             <view class="name_age">
-                {{item.name}} <text style="margin-left: 32rpx;">{{item.age}}</text>
+                {{item.real_name}} <text style="margin-left: 32rpx;">{{item.age}}</text>
             </view>
             <view class="address">
-                {{item.address}} <text>({{item.distance}})</text>
+                {{item.area}} <text>{{item.distance}}</text>
             </view>
             <view class="intro">
-                {{item.introduce}}
+                {{item.industry}}
             </view>
         </view>
-        <image src="{{item.coverImg}}" mode="aspectFill" class="bg" bindtap="toDetail" />
+        <image src="{{item.photo_url}}" mode="aspectFill" class="bg" bindtap="toDetail" />
     
 
 </view>

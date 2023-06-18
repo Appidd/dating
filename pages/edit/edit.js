@@ -52,17 +52,38 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        const that=this
-        Api.getUserInfo().then(res=>{
+        const that = this
+        Api.getUserInfo().then(res => {
             console.log(res.user)
-            const user=res.user
+            const user = res.user
             that.setData({
                 ...user
             })
+            let sex = parseInt(user.sex)
+            console.log(sex)
+            let sex_list = [{
+                    checked: true,
+                    value: '男',
+                    checkedUrl: '/static/images/icon/boyChecked.png',
+                    defaultUrl: '/static/images/icon/boynotChecked.png'
+                },
+                {
+                    checked: false,
+                    value: '女',
+                    checkedUrl: '/static/images/icon/girlChecked.png',
+                    defaultUrl: '/static/images/icon/girlnotChecked.png'
+                }
+            ]
+            if (sex == 1) {
+                that.setData({
+                    sex_list
+                })
+            }
             that.setData({
-                imgList:JSON.parse(user.photo_url)
+                sex: parseInt(user.sex),
+                imgList: JSON.parse(user.photo_url)
             })
-        }).then(err=>{
+        }).then(err => {
             console.log(err)
         })
     },
@@ -100,7 +121,7 @@ Page({
         sex_list[index].checked = true
         this.setData({
             sex_list,
-            sex: index
+            sex: index?0:1
         })
     },
     //选择星座
@@ -135,11 +156,11 @@ Page({
                     console.log(imgList)
                     const imgList = this.data.imgList
                     const newList = imgList.concat(img)
-                    let resultList=[]
-                    if(newList.length>6){
-                        resultList=newList.slice(0,6)
-                    }else{
-                        resultList=newList
+                    let resultList = []
+                    if (newList.length > 6) {
+                        resultList = newList.slice(0, 6)
+                    } else {
+                        resultList = newList
                     }
 
                     that.setData({
@@ -158,10 +179,10 @@ Page({
     },
 
     //删除照片
-    delete(e){
-        const index=e.currentTarget.dataset.index
-        const imgList=this.data.imgList
-       imgList.splice(index,1)
+    delete(e) {
+        const index = e.currentTarget.dataset.index
+        const imgList = this.data.imgList
+        imgList.splice(index, 1)
         this.setData({
             imgList
         })
@@ -185,92 +206,92 @@ Page({
             area,
             now_area
         } = this.data
-      
-        if(!imgList.length){
+
+        if (!imgList.length) {
             wx.showToast({
-              title: '请上传个人照片',
-              icon:'none'
+                title: '请上传个人照片',
+                icon: 'none'
             })
             return
         }
-        if(!real_name){
+        if (!real_name) {
             wx.showToast({
                 title: '请输入真实姓名',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(!age){
+        if (!age) {
             wx.showToast({
                 title: '请输入年龄',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-       
-        if(!height){
+
+        if (!height) {
             wx.showToast({
                 title: '请输入身高',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(!weight){
+        if (!weight) {
             wx.showToast({
                 title: '请输入体重',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(area=='选择区域'){
+        if (area == '选择区域') {
             wx.showToast({
                 title: '请选择地区',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(now_area=='选择现居'){
+        if (now_area == '选择现居') {
             wx.showToast({
                 title: '请选择现居',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(!industry){
+        if (!industry) {
             wx.showToast({
                 title: '请输入行业',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
 
-        if(!income){
+        if (!income) {
             wx.showToast({
                 title: '请输入年收入',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(!wechat){
+        if (!wechat) {
             wx.showToast({
                 title: '请输入微信',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
-        if(!wechat){
+        if (!wechat) {
             wx.showToast({
                 title: '请输入微信',
-                icon:'none'
-              })
-              return
+                icon: 'none'
+            })
+            return
         }
 
-       wx.showLoading({
-         title: '保存中',
-       })
+        wx.showLoading({
+            title: '保存中',
+        })
         Api.editUserInfo({
-            img_list:JSON.stringify(imgList),
+            img_list: JSON.stringify(imgList),
             real_name,
             sex,
             age,
@@ -289,16 +310,16 @@ Page({
         }).then(res => {
             wx.hideLoading()
             wx.showToast({
-              title: '保存成功',
-              icon:'success'
+                title: '保存成功',
+                icon: 'success'
             })
             console.log(res)
         }).catch(err => {
             wx.hideLoading()
             wx.showToast({
                 title: '保存失败',
-                icon:'error'
-              })
+                icon: 'error'
+            })
             console.log(err)
         })
     },

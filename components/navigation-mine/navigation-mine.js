@@ -67,9 +67,16 @@ Component({
         this.triggerEvent('back', { delta: data.delta }, {});
       },
       toSetting(){
-          wx.navigateTo({
-            url: '/pages/setting/setting',
-          })
+          if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/setting/setting',
+              })
+          }else{
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+          }
+          
       },
     },
   });

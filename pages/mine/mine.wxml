@@ -3,16 +3,16 @@
     <view class="scroll_box">
     <scroll-view scroll-y class="scroll_view"  enhanced show-scrollbar="{{false}}">
         <view class="user_Info">
-            <image src="/static/images/icon/default_avatar.png" mode="" class="user_avatar box_bgcolor"/>
+            <image src="{{imgList[0]||'/static/images/icon/default_avatar.png'}}" mode="aspectFill" class="user_avatar box_bgcolor"/>
             <view class="name_id">
                 <view class="user_name">
                     <view >
-                        李思染
+                        {{real_name||'微信用户'}}
                     </view>
-                    <image src="/static/images/icon/girl.png" mode="" class="sex"/>
+                    <image src="{{sex==1?'/static/images/icon/boy.png':'/static/images/icon/girl.png'}}" mode="" class="sex"/>
                 </view>
-                <view class="user_id">
-                    ID:156482452
+                <view class="user_id" bindtap="copyID" data-id="{{uid}}">
+                    ID:{{uid}}
                 </view>
             </view>
         </view>

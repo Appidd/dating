@@ -35,6 +35,7 @@ login(){
                     })
                 })
             }).catch(err=>{
+                console.log(err)
                 wx.hideLoading()
                     wx.showToast({
                       title: '授权失败',

@@ -1,10 +1,15 @@
 // pages/mine/mine.js
+import {
+    api
+} from '../../models/api.js';
+const Api = new api()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        uid:'000',
         currentIndex:1,
         recommendList:[
             {  id:1,
@@ -51,27 +56,65 @@ Page({
         })
     },
     toPrivce(){
-       wx.navigateTo({
-         url: '/pages/privacy/privacy',
-       })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/privacy/privacy',
+              })
+        }else{
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+        }
+       
     },
     toGroup(){
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/group/group',
+              })
+        }else{
         wx.navigateTo({
-          url: '/pages/group/group',
+          url: '/pages/login/login',
         })
+    }
+        
     },
     toEdit(){
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/edit/edit',
+              })
+        }else{
         wx.navigateTo({
-          url: '/pages/edit/edit',
+          url: '/pages/login/login',
         })
+    }
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+this.getSeeList()
+this.getSeekList()
+    },
+    //匹配列表
+    getSeeList(){
 
+        Api.getSeeList({page:1}).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
     },
 
+    //请求列表
+    getSeekList(){
+        Api.getSeekList({page:1}).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -83,9 +126,32 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        const that=this
+        Api.getUserInfo().then(res=>{
+            console.log(res.user)
+            const user=res.user
+            that.setData({
+                ...user
+            })
+            that.setData({
+                sex:parseInt(user.sex)|0,
+                imgList:JSON.parse(user.photo_url)
+            })
+        }).then(err=>{
+            console.log(err)
+        })
     },
-
+    copyID(e){
+        const uid=e.currentTarget.dataset.id
+        wx.setClipboardData({
+          data: uid,
+          success:res=>{
+              wx.showToast({
+                title: '复制成功',
+              })
+          }
+        })
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */

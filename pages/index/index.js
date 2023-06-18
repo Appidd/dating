@@ -1,4 +1,9 @@
 const app=getApp()
+// 调用登录接口
+import {
+    api
+} from '../../models/api.js';
+const Api = new api()
 Page({
 
   /**
@@ -43,9 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-        hasLogin:app.isLogin()
-    })
+    
   },
   getMore(){
 wx.showToast({
@@ -67,9 +70,25 @@ wx.showToast({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      const that=this
     this.setData({
         isLogin: app.isLogin()
     })
+    if(app.isLogin()){
+        Api.getList().then(res=>{
+            const list=[res.data]
+            list.map(e=>{
+                e.photo_url=JSON.parse(e.photo_url)[0]
+                e.like_list=JSON.parse(e.like_list)
+            })
+            console.log(list)
+            that.setData({
+                list
+            })
+        }).catch(err=>{
+           
+        })
+    }
   },
 
   /**
