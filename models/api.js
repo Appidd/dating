@@ -2,7 +2,7 @@ import {
     HTTP
 } from '../utils/http.js';
 
-const baseUrl='https://101.35.179.187:5230'
+const baseUrl='https://m.cretrio.com:5230'
 class api extends HTTP {
     // 登陆接口
     userLogin(parameterObj) {
@@ -147,7 +147,18 @@ getSeekList(parameterObj){
         method: "GET"
     })
 }
-
+//获取联系
+updateLocation(parameterObj){
+    return this.request({
+        url: baseUrl + '/up/tude',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        data: parameterObj,
+        method: "POST"
+    })
+}
 }
 
 export {

@@ -5,8 +5,8 @@ import * as storage from '../../utils/storage.js'
 import {
     api
 } from '../../models/api.js';
-const Api=new api()
-const app=getApp()
+const Api = new api()
+const app = getApp()
 Page({
 
     /**
@@ -15,43 +15,54 @@ Page({
     data: {
 
     },
-login(){
-    wx.showLoading({
-      title: '授权中',
-    })
-    wx.login({
-        success: res => {
-            Api.userLogin({code:res.code}).then(e=>{
-                storage.set('token',e.token)  
-                Api.userUid().then(res => {
-                    storage.set('uid', res.uid)
-                    wx.hideLoading()
-                    wx.navigateBack()
-                }).catch(err=>{
+    login() {
+        wx.showLoading({
+            title: '授权中',
+        })
+        wx.login({
+            success: res => {
+                Api.userLogin({
+                    code: res.code
+                }).then(e => {
+                    storage.set('token', e.token)
+                    Api.userUid().then(res => {
+                        storage.set('uid', res.uid)
+                        wx.hideLoading()
+                        wx.navigateBack()
+                    }).catch(err => {
+                        wx.hideLoading()
+                        wx.showToast({
+                            title: '授权失败',
+                            icon: 'error'
+                        })
+                    })
+                }).catch(err => {
+                    console.log(err)
                     wx.hideLoading()
                     wx.showToast({
-                      title: '授权失败',
-                      icon:'error'
+                        title: '授权失败',
+                        icon: 'error'
                     })
                 })
-            }).catch(err=>{
-                console.log(err)
-                wx.hideLoading()
-                    wx.showToast({
-                      title: '授权失败',
-                      icon:'error'
-                    })
-            })
-          // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        }
-      })
-},
+                // 发送 res.code 到后台换取 openId, sessionKey, unionId
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+                console.log('纬度' + res.latitude)
+              console.log('经度' + res.longitude)
+                storage.set('latitude', res.latitude)
+                storage.set('longitude', res.longitude)
+            }
+        })
     },
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -64,7 +75,7 @@ login(){
      * 生命周期函数--监听页面显示
      */
     onShow() {
-       
+
     },
 
     /**

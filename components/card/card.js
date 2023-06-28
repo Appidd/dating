@@ -37,7 +37,7 @@ Component({
         toDetail() {
             app.globalData.itemObj = this.data.item
             wx.navigateTo({
-                url: '/pages/detail/detail?canSee='+false,
+                url: '/pages/detail/detail?canSee=0',
             })
         },
         toLogin(e) {

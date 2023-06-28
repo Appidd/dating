@@ -134,6 +134,7 @@
     width: 20rpx;
 height: 20rpx;
 background: #D32D25;
+color: white;
 opacity: 1;
 font-size: 16rpx;
 line-height: 20rpx;

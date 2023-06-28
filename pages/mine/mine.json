@@ -1,6 +1,8 @@
 {
     "usingComponents": {
-        "navigation-mine":"/components/navigation-mine/navigation-mine"
+        "navigation-mine":"/components/navigation-mine/navigation-mine",
+        "pcard":"/components/pcard/pcard",
+        "qcard":"/components/qcard/qcard"
     },
     "navigationStyle": "custom"
 }

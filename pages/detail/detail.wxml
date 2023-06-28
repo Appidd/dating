@@ -16,10 +16,10 @@
                 {{item}}
             </view>
         </view>
-        <view class="about_me">
+        <view class="about_me" wx:if="{{canSee}}">
             微信号
         </view>
-        <view class="address">
+        <view class="address" wx:if="{{canSee}}">
             {{itemObj.wechat}}
         </view>
         <view class="about_me">
@@ -37,7 +37,7 @@
         
     </view>
 </view>
-<view class="bottom_fun">
+<view class="bottom_fun" wx:if="{{!canSee}}">
         <view class="funbtn" bindtap="getContact">
             <view class="contact">
                 获取联系

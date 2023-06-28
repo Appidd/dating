@@ -1,0 +1,15 @@
+
+    <view class="water_item" bindtap="toDetail">
+        <view class="is_new" wx:if="{{pcardObj.isNew}}">
+            New
+        </view>
+        <image src="{{pcardObj.photo_url}}" mode="aspectFill" class="water_img" />
+        <view class="info">
+            <view class="name">
+                {{pcardObj.real_name}}
+            </view>
+            <view class="contact">
+                {{pcardObj.wechat}}
+            </view>
+        </view>
+    </view>

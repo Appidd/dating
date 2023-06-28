@@ -30,8 +30,33 @@ App({
   isLogin() {
     return storage.get('token') ? true : false
 },
+getDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // 地球半径，单位为千米
+  
+  
+    const dLat = (lat2 - lat1) * (Math.PI / 180); // 将纬度转换为弧度
+  
+    const dLon = (lon2 - lon1) * (Math.PI / 180); // 将经度转换为弧度
+  
+  
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * (Math.PI / 180)) *
+        Math.cos(lat2 * (Math.PI / 180)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+  
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  
+    const distance = R * c; // 计算距离，单位为千米
+  
+  
+    return distance;
+  },
   globalData: {
     userInfo: null,
-    itemObj:null
+    itemObj:null,
+    latitude:'',
+    longitude:''
   }
 })

@@ -12,17 +12,19 @@ Page({
      * 页面的初始数据
      */
     data: {
-        itemObj:null
+        itemObj:null,
+        canSee:false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options)
+        console.log(options.canSee)
         console.log(app.globalData.itemObj)
         this.setData({
-            itemObj:app.globalData.itemObj
+            itemObj:app.globalData.itemObj,
+            canSee:options.canSee=='1'?true:false
         })
     },
     getBack(){

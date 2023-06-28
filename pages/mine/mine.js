@@ -2,7 +2,9 @@
 import {
     api
 } from '../../models/api.js';
+import * as storage from '../../utils/storage.js'
 const Api = new api()
+const app=getApp()
 Page({
 
     /**
@@ -11,42 +13,18 @@ Page({
     data: {
         uid:'000',
         currentIndex:1,
-        recommendList:[
-            {  id:1,
-                isNew:true,
-                name:'李思思',
-                contact:'xiao-lsd',
-                cover_img:'/static/images/icon/water_img.png'
-            },
-            {
-                id:1,
-                isNew:false,
-                name:'范冰冰',
-                contact:'fan binbin',
-                cover_img:'/static/images/icon/water_img.png'
-            },
-            {
-                id:1,
-                isNew:false,
-                name:'李思瑶',
-                contact:'cons-lsd',
-                cover_img:'/static/images/icon/water_img.png'
-            },
-            {
-                id:1,
-                isNew:false,
-                name:'王丽',
-                contact:'xiao-fdsf',
-                cover_img:'/static/images/icon/water_img.png'
-            },
-            {
-                id:1,
-                isNew:false,
-                name:'王丽',
-                contact:'xiao-fdsf',
-                cover_img:'/static/images/icon/water_img.png'
-            }
+        matchedList:[
+            
+        ],
+        requestedList:[
+           
         ]
+    },
+    refresh(){
+        this.getSeekList()
+    },
+    getMore(){
+        console.log('getmore')
     },
     changeTab(e){
         console.log(e)
@@ -56,39 +34,40 @@ Page({
         })
     },
     toPrivce(){
-        if(getApp().isLogin()){
-            wx.navigateTo({
-                url: '/pages/privacy/privacy',
-              })
-        }else{
-            wx.navigateTo({
-              url: '/pages/login/login',
-            })
-        }
-       
+        // if(getApp().isLogin()){
+        //     wx.navigateTo({
+        //         url: '/pages/privacy/privacy',
+        //       })
+        // }else{
+        //     wx.navigateTo({
+        //       url: '/pages/login/login',
+        //     })
+        // }
+        wx.navigateTo({
+            url: '/pages/privacy/privacy',
+          })
     },
     toGroup(){
-        if(getApp().isLogin()){
-            wx.navigateTo({
-                url: '/pages/group/group',
-              })
-        }else{
         wx.navigateTo({
-          url: '/pages/login/login',
-        })
-    }
+            url: '/pages/group/group',
+          })
+    
         
     },
+   
     toEdit(){
-        if(getApp().isLogin()){
-            wx.navigateTo({
-                url: '/pages/edit/edit',
-              })
-        }else{
-        wx.navigateTo({
-          url: '/pages/login/login',
-        })
-    }
+    //     if(getApp().isLogin()){
+    //         wx.navigateTo({
+    //             url: '/pages/edit/edit',
+    //           })
+    //     }else{
+    //     wx.navigateTo({
+    //       url: '/pages/login/login',
+    //     })
+    // }
+    wx.navigateTo({
+        url: '/pages/edit/edit',
+      })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -99,21 +78,50 @@ this.getSeekList()
     },
     //匹配列表
     getSeeList(){
-
-        Api.getSeeList({page:1}).then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
+        const that=this
+        if(app.isLogin()){
+            Api.getSeeList({page:1}).then(res=>{
+                const list=res.data
+                if(list.length){
+                    list.map(e=>{
+                        e.photo_url=JSON.parse(e.photo_url)[0]
+                        e.like_list=JSON.parse(e.like_list)
+                    })
+                    console.log(list)
+                    
+                }
+                that.setData({
+                    matchedList:list
+                })
+            }).catch(err=>{
+               
+            })
+        }
+       
     },
 
     //请求列表
     getSeekList(){
-        Api.getSeekList({page:1}).then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
+        const that=this
+        if(app.isLogin()){
+            Api.getSeekList({page:1}).then(res=>{
+                const list=res.data
+                if(list.length){
+                    list.map(e=>{
+                        e.photo_url=JSON.parse(e.photo_url)[0]
+                        e.like_list=JSON.parse(e.like_list)
+                    })
+                    console.log(list)
+                    
+                }
+                that.setData({
+                    requestedList:list
+                })
+            }).catch(err=>{
+               
+            })
+        }
+        
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -127,12 +135,14 @@ this.getSeekList()
      */
     onShow() {
         const that=this
+       if(getApp().isLogin()){
         Api.getUserInfo().then(res=>{
             console.log(res.user)
             const user=res.user
             that.setData({
                 ...user
             })
+            storage.set('userInfo',user)
             that.setData({
                 sex:parseInt(user.sex)|0,
                 imgList:JSON.parse(user.photo_url)
@@ -140,6 +150,7 @@ this.getSeekList()
         }).then(err=>{
             console.log(err)
         })
+       }
     },
     copyID(e){
         const uid=e.currentTarget.dataset.id

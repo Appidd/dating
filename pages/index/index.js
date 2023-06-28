@@ -3,6 +3,7 @@ const app=getApp()
 import {
     api
 } from '../../models/api.js';
+import storage from '../../utils/storage.js';
 const Api = new api()
 Page({
 
@@ -12,7 +13,7 @@ Page({
   data: {
     list:[
         {
-            name:'芭比11',
+            real_name:'芭比11',
             age:22,
             address:'潮汕-汕头市11',
             nowLives:'潮汕-汕头市11',
@@ -23,22 +24,9 @@ Page({
             taglist:['176cm','56kg','狮子座','IT/互联网','本科','10w以上'],
             wechat:'Xiaoo65874',
             about:['家庭背景     有个弟弟','刷剧、购物、旅游','不抽烟，身高170以上，温柔，私生活干净，阳光开朗'],
-            coverImg:'/static/images/icon/bg.jpg'
-        },
-        {
-            name:'芭比22',
-            age:23,
-            address:'潮汕-汕头市22',
-            nowLives:'潮汕-汕头市22',
-            distance:'8.83',
-            property:'鼠',
-            introduce:'小程序正在开发中正在开发中小程序正在开发中正在开发中小程序正在开发中正在开发中小程序正在开发中正在开发中',
-            sex:0,
-            taglist:['176cm','56kg','狮子座','IT/互联网','本科','10w以上'],
-            wechat:'content330',
-            about:['编程     发财','刷剧、购物、旅游','不抽烟，身高170以上，温柔，私生活干净，阳光开朗'],
-            coverImg:'/static/images/icon/bg.jpg'
+            photo_url:'/static/images/icon/bg.jpg'
         }
+       
     ],
     isLogin:false
   },
@@ -75,12 +63,24 @@ wx.showToast({
         isLogin: app.isLogin()
     })
     if(app.isLogin()){
+        if( storage.get('latitude')){
+            Api.updateLocation({
+                latitude:storage.get('latitude'),
+                longitude:storage.get('longitude')
+            })
+        }
+        
         Api.getList().then(res=>{
             const list=[res.data]
             list.map(e=>{
                 e.photo_url=JSON.parse(e.photo_url)[0]
                 e.like_list=JSON.parse(e.like_list)
+                const userInfo=storage.get('userInfo')
+                if(userInfo.latitude&&e.latitude!='0'){
+                    e.distance=app.getDistance(parseFloat(userInfo.latitude),parseFloat(userInfo.longitude),parseFloat(e.latitude),parseFloat(e.longitude))
+                }
             })
+
             console.log(list)
             that.setData({
                 list

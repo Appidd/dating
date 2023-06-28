@@ -286,7 +286,6 @@ Page({
             })
             return
         }
-
         wx.showLoading({
             title: '保存中',
         })
@@ -299,7 +298,7 @@ Page({
             height,
             weight,
             constellation,
-            education,
+            edu:education,
             industry,
             income,
             wechat,
@@ -307,6 +306,7 @@ Page({
             hobby,
             area,
             now_area
+          
         }).then(res => {
             wx.hideLoading()
             wx.showToast({

@@ -17,13 +17,11 @@
                 {{item.real_name}} <text style="margin-left: 32rpx;">{{item.age}}</text>
             </view>
             <view class="address">
-                {{item.area}} <text>{{item.distance}}</text>
+                {{item.area}} <text>({{item.distance}}km)</text>
             </view>
             <view class="intro">
                 {{item.industry}}
             </view>
         </view>
         <image src="{{item.photo_url}}" mode="aspectFill" class="bg" bindtap="toDetail" />
-    
-
 </view>
