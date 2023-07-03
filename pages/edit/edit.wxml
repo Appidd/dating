@@ -109,32 +109,26 @@
 
     
     <view class="education_region">
-        <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
+       
+        <view class="region_item">
             <view class="title bold require">
-                区域
+                来自
             </view>
             <view class="choose_box">
-                <view>
-                    {{area}}
-                </view>
-                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+                <input type="text" placeholder="请输入来自地区" class="choose_box" model:value="{{area}}" type="number"/>
             </view>
-       </picker>
-        
+       
+        </view>
 
-       <picker mode="selector" range="{{nowAreaList}}" bindchange="chooseNowArea"> 
+       
         <view class="region_item">
             <view class="title bold require">
                 现居
             </view>
             <view class="choose_box">
-                <view>
-                    {{now_area}}
-                </view>
-                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+                <input type="text" placeholder="请输入现居区域" class="choose_box" model:value="{{now_area}}" type="number"/>
             </view>
         </view>
-       </picker>
        
     </view>
     

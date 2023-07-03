@@ -7,6 +7,7 @@ import {
 } from '../../models/api.js';
 const Api = new api()
 const app = getApp()
+let apiKey='RAQBZ-KL3Y5-GJEIB-IWCRL-VCSUF-W7FGN'
 Page({
 
     /**
@@ -55,10 +56,31 @@ Page({
         wx.getLocation({
             type: 'wgs84',
             success(res) {
-                console.log('纬度' + res.latitude)
-              console.log('经度' + res.longitude)
-                storage.set('latitude', res.latitude)
-                storage.set('longitude', res.longitude)
+                let latitude=res.latitude
+                let longitude=res.longitude
+                storage.set('latitude', latitude)
+                storage.set('longitude', longitude)
+                wx.request({
+                    url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${apiKey}`,
+                    success(addressInfo) {
+                        console.log(addressInfo)
+                        let address=addressInfo.data.result.address_component
+                        let area=address.city+address.district
+                        storage.set('area', area)
+                        console.log(area)
+                    //   const address = res.data.result.address; // 地址详情
+                  
+                  
+                      // 在这里可以处理获取到的地理位置详情
+                  
+                  
+                    },
+                    fail() {
+                      // 请求逆地址解析接口失败
+                  
+                  
+                    }
+                  })
             }
         })
     },

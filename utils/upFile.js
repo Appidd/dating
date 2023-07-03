@@ -1,4 +1,4 @@
-let uploadUrl='https://101.35.179.187:5230/up/image'
+let uploadUrl='https://sns.uba9.com:5230/up/image'
  const upFileObj={
 // 选择图片并上传，编辑页面插入图片
 uploadFilePromiseInsert(filePath){
