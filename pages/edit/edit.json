@@ -1,6 +1,8 @@
 {
     "usingComponents": {
-        "van-uploader": "@vant/weapp/uploader/index"
+        "van-uploader": "@vant/weapp/uploader/index",
+        "van-popup": "@vant/weapp/popup/index",
+        "van-cascader": "@vant/weapp/cascader/index"
     },
     "navigationBarTitleText": "信息编辑"
 }

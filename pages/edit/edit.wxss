@@ -106,7 +106,7 @@
     bottom: 0;
     padding: 20rpx 48rpx 48rpx 48rpx;
     box-sizing: border-box;
-    z-index: 999;
+    z-index: 9;
 }
 
 .funbtn {

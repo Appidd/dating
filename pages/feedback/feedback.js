@@ -73,7 +73,7 @@ Page({
         wx.showLoading({
           title: '提交中',
         })
-       const uploadUrl='https://101.35.179.187:5230/up/suggest'
+       const uploadUrl='https://sns.uba9.com:5230/up/suggest'
         wx.uploadFile({
             url: uploadUrl,
             header: {

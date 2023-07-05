@@ -12,6 +12,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        cascaderValue: '',
+        cascaderData:[],
         wechat: '',
         family: '',
         hobby: '',
@@ -52,11 +54,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
-        this.setData({
-            area:  storage.get('area')
-        })
         const that = this
+        this.setData({
+            area: storage.get('area')
+        })
+
         Api.getUserInfo().then(res => {
             console.log(res.user)
             const user = res.user
@@ -90,6 +92,128 @@ Page({
         }).then(err => {
             console.log(err)
         })
+        Api.getArea().then(res => {
+            // console.log(res)
+            let data = res.data
+            that.fomatCasData(data)
+        })
+    },
+    onFinish(e) {
+        console.log(e)
+        const { selectedOptions, value } = e.detail;
+        const fieldValue = selectedOptions
+            .map((option) => option.text || option.name)
+            .join('-');
+            console.log(fieldValue,value)
+        this.setData({
+          fieldValue,
+          cascaderValue: value,
+          now_area:fieldValue,
+          show:false
+        })
+      },
+      onClick() {
+        this.setData({
+          show: true,
+        });
+      },
+    
+      onClose() {
+        this.setData({
+          show: false,
+        });
+      },
+    fomatCasData(data) {
+        // 转换为四级级联选择的对象数组
+
+        const cascaderData = [];
+
+        data.forEach(item => {
+            const provinceIndex = cascaderData.findIndex(province => province.text === item.city);
+            if (provinceIndex === -1) {
+                const province = {
+                    value: item.city,
+                    text: item.city,
+                    children: []
+                };
+                const city = {
+                    value: item.area,
+                    text: item.area,
+                    children: []
+                };
+                const town = {
+                    value: item.town,
+                    text: item.town,
+                    children: []
+                };
+                const village = {
+                    value: item.village,
+                    text: item.village
+
+                };
+
+                town.children.push(village);
+                city.children.push(town);
+                province.children.push(city);
+
+                cascaderData.push(province);
+            } else {
+                const province = cascaderData[provinceIndex];
+                const cityIndex = province.children.findIndex(city => city.text === item.area);
+                if (cityIndex === -1) {
+                    const city = {
+                        value: item.area,
+                        text: item.area,
+                        children: []
+                    };
+                    const town = {
+                        value: item.town,
+                        text: item.town,
+                        children: []
+                    };
+                    const village = {
+                        value: item.village,
+                        text: item.village
+
+                    };
+
+                    town.children.push(village);
+                    city.children.push(town);
+                    province.children.push(city);
+                } else {
+                    const city = province.children[cityIndex];
+                    const townIndex = city.children.findIndex(town => town.text === item.town);
+                    if (townIndex === -1) {
+                        const town = {
+                            value: item.town,
+                            text: item.town,
+                            children: []
+                        };
+                        const village = {
+                            value: item.village,
+                            text: item.village
+
+                        };
+
+                        town.children.push(village);
+                        city.children.push(town);
+                    } else {
+                        const town = city.children[townIndex];
+                        const village = {
+                            value: item.village,
+                            text: item.village
+
+                        };
+
+                        town.children.push(village);
+                    }
+                }
+            }
+        });
+this.setData({
+    cascaderData:cascaderData.slice(0,-1)
+})
+console.log(cascaderData)
     },
     // 选择生肖
     chineseZodiac(e) {
@@ -109,10 +233,11 @@ Page({
     },
     //选择现居
     chooseNowArea(e) {
-        const index = parseInt(e.detail.value)
-        const now_area = this.data.nowAreaList[index]
+        // const index = parseInt(e.detail.value)
+        // const now_area = this.data.nowAreaList[index]
         this.setData({
-            now_area
+            // now_area
+            show:true
         })
     },
     // 选择性别
@@ -125,7 +250,7 @@ Page({
         sex_list[index].checked = true
         this.setData({
             sex_list,
-            sex: index?0:1
+            sex: index ? 0 : 1
         })
     },
     //选择星座
@@ -302,7 +427,7 @@ Page({
             height,
             weight,
             constellation,
-            edu:education,
+            edu: education,
             industry,
             income,
             wechat,
@@ -310,7 +435,7 @@ Page({
             hobby,
             area,
             now_area
-          
+
         }).then(res => {
             wx.hideLoading()
             wx.showToast({
