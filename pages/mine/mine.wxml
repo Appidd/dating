@@ -36,8 +36,12 @@
                     </view>
                 </view>
             </view>
-            <image src="/static/images/icon/swiper_mine.png" mode="" class="swiper_item box_bgcolor" />
-
+            <swiper autoplay indicator-dots>
+                <swiper-item wx:for="{{banner}}"> 
+                    <image src="{{item}}" mode="aspectFill" class="swiper_item box_bgcolor"/>
+                </swiper-item>
+            </swiper>
+           
             <view class="tabList">
 
                 <view class="default_tab {{currentIndex==1?'active_tab':''}}" data-index="{{1}}" bindtap="changeTab">

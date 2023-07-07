@@ -22,6 +22,18 @@ Page({
     },
     refresh(){
         this.getSeekList()
+        
+    },
+    getBanner(){
+        Api.getBanner().then(res=>{
+            this.setData({
+                banner:res.data
+            })
+          console.log(res)
+            
+        }).catch(err=>{
+           
+        })
     },
     getMore(){
         console.log('getmore')
@@ -73,6 +85,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.getBanner()
 this.getSeeList()
 this.getSeekList()
     },
@@ -148,7 +161,7 @@ this.getSeekList()
                 imgList:JSON.parse(user.photo_url)
             })
         }).then(err=>{
-            console.log(err)
+           
         })
        }
     },
