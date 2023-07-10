@@ -93,7 +93,7 @@ Page({
                 })
                setTimeout(e=>{
                    wx.navigateBack()
-               },1000)
+               },2000)
             },
             fail:err=>{
                 console.log(err)

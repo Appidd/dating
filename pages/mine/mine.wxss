@@ -88,9 +88,9 @@
 
 .swiper_item {
     width: 654rpx;
-    height: 286rpx;
+    height: 218rpx;
     border-radius: 24rpx 24rpx 24rpx 24rpx;
-    margin-top: 24rpx;
+    /* margin-top: 24rpx; */
 }
 .tabList{
     display: flex;

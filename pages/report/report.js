@@ -112,6 +112,27 @@ Page({
             })
             return
         }
+        if(r_uid==''){
+            wx.showToast({
+              title: '请填写举报用户ID',
+              icon:'error'
+            })
+            return
+        }
+        if(type==''){
+            wx.showToast({
+              title: '请选择举报的类型',
+              icon:'error'
+            })
+            return
+        }
+        if(describe==''){
+            wx.showToast({
+              title: '请选输入举报描述',
+              icon:'error'
+            })
+            return
+        }
         wx.showLoading({
           title: '提交中',
         })
@@ -137,7 +158,7 @@ Page({
                 })
                 setTimeout(e=>{
                     wx.navigateBack()
-                },1000)
+                },2000)
               
             },
             fail:err=>{

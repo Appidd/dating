@@ -1,4 +1,9 @@
 /* pages/feedback/feedback.wxss */
+.require::after {
+    content: '*';
+    color: red;
+    margin-left: 3rpx;
+}
 .title_num_box {
     display: flex;
     justify-content: space-between;

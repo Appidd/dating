@@ -12,20 +12,7 @@ Page({
    */
   data: {
     list:[
-        {
-            real_name:'芭比11',
-            age:22,
-            address:'潮汕-汕头市11',
-            nowLives:'潮汕-汕头市11',
-            distance:'8.83',
-            property:'龙',
-            introduce:'不Y 喜欢能够给我提供情绪价值的朋友 不擅长聊天 希望你是趣的酒搭子饭搭子',
-            sex:0,
-            taglist:['176cm','56kg','狮子座','IT/互联网','本科','10w以上'],
-            wechat:'Xiaoo65874',
-            about:['家庭背景     有个弟弟','刷剧、购物、旅游','不抽烟，身高170以上，温柔，私生活干净，阳光开朗'],
-            photo_url:'/static/images/icon/bg.jpg'
-        }
+     
        
     ],
     isLogin:false
@@ -38,6 +25,7 @@ Page({
   onLoad: function (options) {
     
   },
+ 
   getMore(){
 wx.showToast({
   title: '暂无更多内容',
@@ -63,6 +51,14 @@ wx.showToast({
         isLogin: app.isLogin()
     })
     if(app.isLogin()){
+        Api.userUid().then(re => {
+           if(re.code==201){
+               wx.clearStorage()
+           }else{
+            app.globalData.uid=re.uid
+           }
+        })
+        
         if( storage.get('latitude')){
             Api.updateLocation({
                 latitude:storage.get('latitude'),

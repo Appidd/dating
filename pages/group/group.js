@@ -14,7 +14,11 @@ Page({
     onLoad(options) {
 
     },
-
+    preview(){
+        wx.previewImage({
+          urls: ['https://sns.uba9.com:5230/static/photo/qrcode.jpg'],
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -101,7 +101,7 @@
             不给谁看
         </view>
     </view>
-    <input model:value="{{see_not}}" placeholder="输入姓、姓名" class="contact_area" placeholder-class="placeholder" maxlength="200" />
+    <input model:value="{{see_not}}" placeholder="输入uid" class="contact_area" placeholder-class="placeholder" maxlength="200" />
     <view style="height: 200rpx;">
 
     </view>

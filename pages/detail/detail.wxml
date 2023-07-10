@@ -12,14 +12,35 @@
             现居：{{itemObj.now_area}}
         </view>
         <view class="tags" >
-            <view class="tag" wx:for="{{itemObj.like_list}}" >
-                {{item}}
+            <view class="tag" wx:if="{{itemObj.height}}">
+                {{itemObj.height}}cm
             </view>
+            <view class="tag" wx:if=" {{itemObj.weight}}">
+                {{itemObj.weight}}kg
+            </view>
+            <view class="tag" wx:if=" {{itemObj.constellation}}">
+                {{itemObj.constellation}}
+            </view>
+            <view class="tag" wx:if=" {{itemObj.industry}}">
+                {{itemObj.industry}}
+            </view>
+            <view class="tag" wx:if=" {{itemObj.edu}}">
+                
+                {{itemObj.edu=='0'?'小学':itemObj.edu=='1'?'初中':itemObj.edu=='2'?'高中':itemObj.edu=='3'?'大专':itemObj.edu=='4'?'本科':itemObj.edu=='5'?'硕士':'博士'}}
+            </view>
+            <view class="tag" wx:if=" {{itemObj.income}}">
+                
+                {{itemObj.income}}以上
+            </view>
+
+            <!-- <view class="tag" wx:for="{{itemObj.like_list}}" >
+                {{item}}
+            </view> -->
         </view>
         <view class="about_me" wx:if="{{canSee}}">
             微信号
         </view>
-        <view class="address" wx:if="{{canSee}}">
+        <view class="address" wx:if="{{canSee||itemObj.is_del!='False'}}">
             {{itemObj.wechat}}
         </view>
         <view class="about_me">

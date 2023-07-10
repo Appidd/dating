@@ -25,7 +25,7 @@
 </view>
 <view class="bottom_fun">
         <view class="funbtn">
-            <view class="contact">
+            <view class="contact" bindtap="loginOut">
                 退出登陆
             </view>
         </view>

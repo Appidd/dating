@@ -43,7 +43,9 @@ Page({
             wx.showToast({
               title: '请求已发送',
             })
-            console.log(res)
+            setTimeout(e=>{
+                wx.navigateBack()
+            },2000)
         }).catch(err=>{
             console.log(err)
         })

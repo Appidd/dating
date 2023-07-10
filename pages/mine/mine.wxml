@@ -36,9 +36,9 @@
                     </view>
                 </view>
             </view>
-            <swiper autoplay indicator-dots>
-                <swiper-item wx:for="{{banner}}"> 
-                    <image src="{{item}}" mode="aspectFill" class="swiper_item box_bgcolor"/>
+            <swiper autoplay indicator-dots style="height:  230rpx;width: 100%;margin-top: 20rpx;">
+                <swiper-item wx:for="{{banner}}" > 
+                    <image src="{{item}}" mode="aspectFill" class="swiper_item box_bgcolor"  />
                 </swiper-item>
             </swiper>
            

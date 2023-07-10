@@ -12,6 +12,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        animals:'',
         cascaderValue: '',
         cascaderData:[],
         wechat: '',
@@ -47,7 +48,8 @@ Page({
         areaList: ['选择地区', '汕头', '潮州', '揭阳'],
         area: '选择地区',
         nowAreaList: ['选择现居', '汕头', '潮州', '揭阳'],
-        now_area: '选择现居'
+        now_area: '选择现居',
+        uid:getApp().globalData.uid
     },
 
     /**
@@ -56,7 +58,7 @@ Page({
     onLoad(options) {
         const that = this
         this.setData({
-            area: storage.get('area')
+            nowarea: storage.get('area')
         })
 
         Api.getUserInfo().then(res => {
@@ -108,7 +110,7 @@ Page({
         this.setData({
           fieldValue,
           cascaderValue: value,
-          now_area:fieldValue,
+          area:fieldValue,
           show:false
         })
       },
@@ -442,6 +444,9 @@ console.log(cascaderData)
                 title: '保存成功',
                 icon: 'success'
             })
+            setTimeout(e=>{
+                wx.navigateBack()
+            },2000)
             console.log(res)
         }).catch(err => {
             wx.hideLoading()

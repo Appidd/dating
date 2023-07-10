@@ -4,137 +4,144 @@ import {
 } from '../../models/api.js';
 import * as storage from '../../utils/storage.js'
 const Api = new api()
-const app=getApp()
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        uid:'000',
-        currentIndex:1,
-        matchedList:[
-            
+        uid: '000',
+        currentIndex: 1,
+        matchedList: [
+
         ],
-        requestedList:[
-           
+        requestedList: [
+
         ]
     },
-    refresh(){
-        this.getSeekList()
-        
-    },
-    getBanner(){
-        Api.getBanner().then(res=>{
-            this.setData({
-                banner:res.data
-            })
-          console.log(res)
-            
-        }).catch(err=>{
-           
+    reSet(){
+        this.setData({
+            imgList:[],
+            real_name:'',
+            uid:'000'
         })
     },
-    getMore(){
+    refresh() {
+        this.getSeekList()
+
+    },
+    getBanner() {
+        Api.getBanner().then(res => {
+            this.setData({
+                banner: res.data
+            })
+            console.log(res)
+
+        }).catch(err => {
+
+        })
+    },
+    getMore() {
         console.log('getmore')
     },
-    changeTab(e){
+    changeTab(e) {
         console.log(e)
-       let index=e.currentTarget.dataset.index
+        let index = e.currentTarget.dataset.index
         this.setData({
-            currentIndex:index
+            currentIndex: index
         })
     },
-    toPrivce(){
-        // if(getApp().isLogin()){
-        //     wx.navigateTo({
-        //         url: '/pages/privacy/privacy',
-        //       })
-        // }else{
-        //     wx.navigateTo({
-        //       url: '/pages/login/login',
-        //     })
-        // }
-        wx.navigateTo({
-            url: '/pages/privacy/privacy',
-          })
-    },
-    toGroup(){
-        wx.navigateTo({
-            url: '/pages/group/group',
-          })
-    
+    toPrivce() {
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '/pages/privacy/privacy',
+              })
+        }else{
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+        }
         
     },
-   
-    toEdit(){
-    //     if(getApp().isLogin()){
-    //         wx.navigateTo({
-    //             url: '/pages/edit/edit',
-    //           })
-    //     }else{
-    //     wx.navigateTo({
-    //       url: '/pages/login/login',
-    //     })
-    // }
-    wx.navigateTo({
-        url: '/pages/edit/edit',
-      })
+    toGroup() {
+        wx.navigateTo({
+            url: '/pages/group/group',
+        })
+
+
+    },
+
+    toEdit() {
+            if(getApp().isLogin()){
+                wx.navigateTo({
+                    url: '/pages/edit/edit',
+                  })
+            }else{
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+        }
+        
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
         this.getBanner()
-this.getSeeList()
-this.getSeekList()
+        this.getSeeList()
+        this.getSeekList()
     },
     //匹配列表
-    getSeeList(){
-        const that=this
-        if(app.isLogin()){
-            Api.getSeeList({page:1}).then(res=>{
-                const list=res.data
-                if(list.length){
-                    list.map(e=>{
-                        e.photo_url=JSON.parse(e.photo_url)[0]
-                        e.like_list=JSON.parse(e.like_list)
+    getSeeList() {
+        const that = this
+        if (app.isLogin()) {
+            Api.getSeeList({
+                page: 1
+            }).then(res => {
+                const list = res.data
+                if (list.length) {
+                    list.map(e => {
+                        e.photo_url = JSON.parse(e.photo_url)[0]
+                        e.like_list = JSON.parse(e.like_list)
                     })
                     console.log(list)
-                    
+
                 }
                 that.setData({
-                    matchedList:list
+                    matchedList: list
                 })
-            }).catch(err=>{
-               
+            }).catch(err => {
+
             })
         }
-       
+
     },
 
     //请求列表
-    getSeekList(){
-        const that=this
-        if(app.isLogin()){
-            Api.getSeekList({page:1}).then(res=>{
-                const list=res.data
-                if(list.length){
-                    list.map(e=>{
-                        e.photo_url=JSON.parse(e.photo_url)[0]
-                        e.like_list=JSON.parse(e.like_list)
+    getSeekList() {
+        const that = this
+        if (app.isLogin()) {
+            Api.getSeekList({
+                page: 1
+            }).then(res => {
+                const list = res.data
+                if (list.length) {
+                    list.map(e => {
+                        e.photo_url = JSON.parse(e.photo_url)[0]
+                        e.like_list = JSON.parse(e.like_list)
                     })
                     console.log(list)
-                    
+
                 }
                 that.setData({
-                    requestedList:list
+                    requestedList: list
                 })
-            }).catch(err=>{
-               
+            }).catch(err => {
+
             })
         }
-        
+
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -147,33 +154,42 @@ this.getSeekList()
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        const that=this
-       if(getApp().isLogin()){
-        Api.getUserInfo().then(res=>{
-            console.log(res.user)
-            const user=res.user
-            that.setData({
-                ...user
+        const that = this
+        if (getApp().isLogin()) {
+            Api.userUid().then(re => {
+                if(re.code==201){
+                    wx.clearStorage()
+                }else{
+                    app.globalData.uid=re.uid
+                Api.getUserInfo().then(res => {
+                    console.log(res.user)
+                    const user = res.user
+                    that.setData({
+                        ...user
+                    })
+                    storage.set('userInfo', user)
+                    that.setData({
+                        sex: parseInt(user.sex) | 0,
+                        imgList: JSON.parse(user.photo_url)
+                    })
+                }).then(err => {
+                })
+                }
             })
-            storage.set('userInfo',user)
-            that.setData({
-                sex:parseInt(user.sex)|0,
-                imgList:JSON.parse(user.photo_url)
-            })
-        }).then(err=>{
-           
-        })
-       }
+            
+        }else{
+            this.reSet()
+        }
     },
-    copyID(e){
-        const uid=e.currentTarget.dataset.id
+    copyID(e) {
+        const uid = e.currentTarget.dataset.id
         wx.setClipboardData({
-          data: uid,
-          success:res=>{
-              wx.showToast({
-                title: '复制成功',
-              })
-          }
+            data: uid,
+            success: res => {
+                wx.showToast({
+                    title: '复制成功',
+                })
+            }
         })
     },
     /**

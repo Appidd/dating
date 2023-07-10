@@ -44,8 +44,8 @@ Page({
         })
     },
     onChangeAge(event) {
-        const age_end = event.detail[0]
-        const age_start = event.detail[1]
+        const age_end = event.detail[1]
+        const age_start = event.detail[0]
         this.setData({
             age_start,
             age_end
@@ -170,6 +170,9 @@ Page({
             wx.showToast({
                 title: '保存成功',
             })
+            setTimeout(e=>{
+                wx.navigateBack()
+            },2000)
         }).catch(err => {
             wx.hideLoading()
             wx.showToast({

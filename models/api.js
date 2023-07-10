@@ -42,7 +42,7 @@ class api extends HTTP {
      // 信息编辑
      getUserInfo(){
         return this.request({
-            url: baseUrl + '/user/data?uid='+wx.getStorageSync('uid'),
+            url: baseUrl + '/user/data?uid='+ getApp().globalData.uid,
             // header : {
             //     'content-type': 'application/x-www-form-urlencoded',
             //     // 'token':wx.getStorageSync('token')

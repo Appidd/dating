@@ -26,17 +26,8 @@ Page({
                     code: res.code
                 }).then(e => {
                     storage.set('token', e.token)
-                    Api.userUid().then(res => {
-                        storage.set('uid', res.uid)
-                        wx.hideLoading()
-                        wx.navigateBack()
-                    }).catch(err => {
-                        wx.hideLoading()
-                        wx.showToast({
-                            title: '授权失败',
-                            icon: 'error'
-                        })
-                    })
+                    wx.hideLoading()
+                    wx.navigateBack()
                 }).catch(err => {
                     console.log(err)
                     wx.hideLoading()

@@ -43,7 +43,7 @@
             </view>
             <view class="choose_box">
                 <view>
-                    {{animals}}
+                    {{animals||''}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
@@ -116,7 +116,7 @@
             </view>
            
             <view class="choose_box" bindtap="chooseNowArea">
-            {{now_area||''}}
+            {{area||''}}
                 <!-- <input type="text" placeholder="请输入现居区域" class="choose_box" model:value="{{now_area}}" type="number"/> -->
             </view>
         </view>
@@ -127,7 +127,7 @@
                 现居
             </view>
             <view class="choose_box">
-                <input type="text" placeholder="请输入来自地区" class="choose_box" model:value="{{area}}" />
+                <input type="text" placeholder="请输入现居" class="choose_box" model:value="{{now_area||nowarea}}" />
             </view>
            
         </view>

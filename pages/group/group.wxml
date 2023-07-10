@@ -1,27 +1,31 @@
 <view class="container">
     <view class="container_box">
-        <image src="/static/images/icon/group_scan.png" mode="aspectFill" class="group_scan" />
+        <image src="https://sns.uba9.com:5230/static/photo/qrcode.jpg" mode="aspectFill" class="group_scan" bindtap="preview" />
         
         <view class="group_name">
             微信交流群
         </view>
 
-
-  
         <view class="content" style="margin-top: 90rpx;">
-            同时，我们也非常欢迎商务合作。如果您对我们的产品或服务感兴趣，可以通过以下方式与我们联系：
+            嗨嗨，CreTrio搭埠姿娘 致力于连接潮汕年轻人的小圈子
         </view>
         <view class="content" >
-            1.电子邮件：info@wetab.com
+            潮汕文化是丰富多彩的，但并不意味着要被传统所定义
         </view>
         <view class="content">
-            2.电话：+86 123456789
+            我们相信每个人都有自己独特的爱情观和人生态度
         </view>
         <view class="content">
-            3.在我们的网站上填写联系表格
+            并且鼓励积极的思维方式，推崇平等、尊重和包容的价值观
         </view>
         <view class="content">
-            我们愿意提供更多的详细信息，并为您定制最适合您业务需求的解决方案。期待与您的合作！
+            & 不欢迎封建迷信、大男人主义和重男轻女的观念。
+        </view>
+        <view class="content">
+            如果命运是世界上最烂的编剧；
+        </view>
+        <view class="content">
+            那么你就要争取,做你人生最好的演员。
         </view>
     </view>
 </view>

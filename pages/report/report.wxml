@@ -1,10 +1,10 @@
 <view class="container">
-    <view class="title" style="margin-top: 20rpx;">
+    <view class="title require" style="margin-top: 20rpx;">
         举报用户ID
     </view>
     <input model:value="{{r_uid}}" placeholder="输入想举报的用户ID" class="contact_area" placeholder-class="placeholder" maxlength="200" />
 
-    <view class="title" style="margin-top: 48rpx;">
+    <view class="title require" style="margin-top: 48rpx;">
         请选择你想要举报的类型
     </view>
     <view class="typebox">
@@ -13,7 +13,7 @@
          </view>
     </view>
     <view class="title_num_box">
-        <view class="title" style="margin-top: 48rpx;">
+        <view class="title require" style="margin-top: 48rpx;">
             举报描述
         </view>
         <view class="num">
@@ -22,7 +22,7 @@
     </view>
     <textarea model:value="{{describe}}" placeholder="提供更多信息有助于举报被快速处理~" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum" />
     <view class="title_num_box">
-        <view class="title" style="margin-top: 48rpx;">
+        <view class="title require" style="margin-top: 48rpx;">
             举报照片
         </view>
         <!-- <view class="num">

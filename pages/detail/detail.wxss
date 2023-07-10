@@ -77,6 +77,7 @@
     font-size: 24rpx;
     color: #202020;
     flex-shrink: 0;
+   color: #cccccc;
 }
 
 .tag:nth-child(n+2) {

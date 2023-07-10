@@ -27,4 +27,5 @@
     width: 100%;
     font-size: 24rpx;
     margin-top: 18rpx;
+    text-align: center;
 }

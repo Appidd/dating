@@ -1,4 +1,5 @@
 let uploadUrl='https://sns.uba9.com:5230/up/image'
+
  const upFileObj={
 // 选择图片并上传，编辑页面插入图片
 uploadFilePromiseInsert(filePath){
@@ -11,7 +12,7 @@ uploadFilePromiseInsert(filePath){
           },
           filePath: filePath,
           formData: {
-            "uid": wx.getStorageSync('uid')
+            "uid": getApp().globalData.uid
           },
           name: "file",
           success:res=>{
