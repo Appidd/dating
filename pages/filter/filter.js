@@ -13,10 +13,10 @@ Page({
         age_end:45,
         height_start:167,
         height_end:187,
-        sex:0,
+        sex:-1,
         edu:1,
         area:'选择地区',
-        sexList:['女','男'],
+        sexList:['不限','女','男'],
         educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
         areaList: ['选择地区', '汕头', '潮州', '揭阳']
     },
@@ -68,7 +68,7 @@ Page({
         })
       },
       choosesex(e){
-          const sex=parseInt(e.detail.value)
+          const sex=parseInt(e.detail.value)-1
           this.setData({
             sex
           })

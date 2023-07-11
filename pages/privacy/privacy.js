@@ -20,13 +20,15 @@ Page({
         endAge: 26,
         show_name: 1,
         open_tel: 1,
-        open_income: 0,
+        open_income: 1,
         open_family: 1,
         educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
-        see_edu: 0,
+        see_edu: 1,
         areaList: ['选择地区', '汕头', '潮州', '揭阳'],
         see_area: '选择地区',
-        see_not: ''
+        see_not: '',
+        heightList:[150,176],
+        ageList:[16,30]
     },
     //选择学历
     chooseeducation(e) {
@@ -113,10 +115,10 @@ Page({
             open_tel=parseInt(open_tel)
             open_income=parseInt(open_income)
             open_family=parseInt(open_family)
-            height_end=parseInt(height_end)
-            height_start=parseInt(height_start)
-            age_start=parseInt(age_start)
-            age_end=parseInt(age_end)
+            height_end=parseInt(height_end||176)
+            height_start=parseInt(height_start||150)
+            age_start=parseInt(age_start||16)
+            age_end=parseInt(age_end||30)
             that.setData({
                 show_name,
             open_tel,
@@ -128,7 +130,9 @@ Page({
             height_end,
             height_start,
             age_start,
-            age_end
+            age_end,
+            ageList:[age_start,age_end],
+            heightList:[height_start,height_end]
             })
         
      }).catch(err=>{

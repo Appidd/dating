@@ -164,11 +164,11 @@
     <view style="margin-top: 48rpx;">
         <text class="bold">家人闲坐,灯火可亲</text> 
     </view>
-    <textarea model:value="{{family||''}}" placeholder="分享你独特的生活角落吧。家庭背景&成员，让TA更了解你" class="text_area" placeholder-class="placeholder" />
+    <textarea model:value="{{family}}" placeholder="分享你独特的生活角落吧。家庭背景&成员，让TA更了解你" class="text_area" placeholder-class="placeholder" />
     <view style="margin-top: 48rpx;">
         <text class="bold">门当户对,恩爱加倍</text> 
     </view>
-    <textarea model:value="{{hobby||''}}" placeholder="浪漫固然重要 但真诚更胜一筹。填写你的兴趣爱好&择偶标准吧" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
+    <textarea model:value="{{hobby}}" placeholder="浪漫固然重要 但真诚更胜一筹。填写你的兴趣爱好&择偶标准吧" class="text_area" placeholder-class="placeholder" maxlength="200" bindinput="checkNum"/>
     <view style="height: 200rpx;">
 
     </view>

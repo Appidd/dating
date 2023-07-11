@@ -32,7 +32,7 @@
    <picker mode="selector" range="{{sexList}}" bindchange="choosesex"> 
     <view class="choose_box">
        <view>
-        {{sex==1?'男':'女'}}
+        {{sex==-1?'不限':sex==1?'男':'女'}}
        </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>

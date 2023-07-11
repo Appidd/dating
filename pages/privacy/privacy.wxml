@@ -49,7 +49,7 @@
         </view>
     </view>
     <view style="margin-top: 46rpx;">
-        <van-slider value="{{ [20, 26] }}" range bind:change="onChangeAge" bar-height='4' active-color="#000" min="18" max="60">
+        <van-slider value="{{ ageList }}" range bind:change="onChangeAge" bar-height='4' active-color="#000" min="18" max="60">
 
         </van-slider>
     </view>
@@ -63,7 +63,7 @@
         </view>
     </view>
     <view style="margin-top: 46rpx;">
-        <van-slider value="{{ [156, 173] }}" range bind:change="onChangeHeight" bar-height='4' active-color="#000" min="140" max="200">
+        <van-slider value="{{ heightList }}" range bind:change="onChangeHeight" bar-height='4' active-color="#000" min="140" max="200">
 
         </van-slider>
     </view>
