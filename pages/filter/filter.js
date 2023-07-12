@@ -25,7 +25,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+this.getFilter()
+    },
+    getFilter(){
+        const that=this
+        Api.getFilter().then(res=>{
+            console.log(res)
+            const result=res.data
+            that.setData({
+                age_end:parseInt(result.age_end||45),
+                age_start:parseInt(result.age_start||20),
+                height_end:parseInt(result.height_end||187),
+                height_start:parseInt(result.height_start||167),
+                edu:parseInt(result.edu||1),
+                sex:parseInt(result.sex||-1),
+                area:result.area=='[]'?'':'选择地区'
+            })
+        })
     },
     reset(){
         this.setData({
@@ -33,9 +49,11 @@ Page({
             age_end:45,
             height_start:167,
             height_end:187,
-            sex:0,
+            sex:-1,
             edu:1,
+            area:'选择地区'
         })
+        this.submit()
     },
     chooseeducation(e) {
         const index = parseInt(e.detail.value)

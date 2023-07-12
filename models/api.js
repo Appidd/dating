@@ -181,6 +181,17 @@ getBanner(parameterObj){
         method: "GET"
     })
 }
+
+getFilter(parameterObj){
+    return this.request({
+        url: baseUrl + '/match/getset',
+        header : {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token':wx.getStorageSync('token')
+        },
+        method: "GET"
+    })
+}
 }
 
 export {

@@ -1,5 +1,11 @@
 <view class="container">
-    <image src="{{itemObj.photo_url||'/static/images/icon/bg.jpg'}}" mode="aspectFill" class="imgs" />
+    <swiper class="imgs">
+        <swiper-item wx:for="{{itemObj.photo_url}}" >
+             
+            <image src="{{item||'/static/images/icon/bg.jpg'}}" mode="aspectFill"  class="imgs"/>
+        </swiper-item>
+    </swiper>
+    
   
     <view style="padding:0rpx 16rpx">
         <view class="name_age">

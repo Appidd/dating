@@ -57,7 +57,7 @@
    <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
     <view class="choose_box">
        <view>
-       {{area}}
+       {{area||'选择地区'}}
        </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>

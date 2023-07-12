@@ -65,24 +65,26 @@ wx.showToast({
                 longitude:storage.get('longitude')
             })
         }
-        
+        console.log(22)
         Api.getList().then(res=>{
+            
             const list=[res.data]
             list.map(e=>{
-                e.photo_url=JSON.parse(e.photo_url)[0]
-                e.like_list=JSON.parse(e.like_list)
+                const urlListString=e.photo_url.replaceAll('\\','')
+                console.log(urlListString)
+                    e.photo_url=JSON.parse(urlListString)
+            console.log(e.photo_url)
+                // e.like_list=JSON.parse(e.like_list)
                 const userInfo=storage.get('userInfo')
                 if(userInfo.latitude&&e.latitude!='0'){
                     e.distance=app.getDistance(parseFloat(userInfo.latitude),parseFloat(userInfo.longitude),parseFloat(e.latitude),parseFloat(e.longitude))
                 }
             })
-
-            console.log(list)
             that.setData({
                 list
             })
         }).catch(err=>{
-           
+           console.log(err)
         })
     }
   },
