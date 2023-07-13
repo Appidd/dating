@@ -11,10 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[
-     
-       
-    ],
+    list:[],
     isLogin:false
   },
 
@@ -23,9 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
- 
   getMore(){
 wx.showToast({
   title: '暂无更多内容',
@@ -58,16 +53,15 @@ wx.showToast({
             app.globalData.uid=re.uid
            }
         })
-        
+        wx.showLoading()
         if( storage.get('latitude')){
             Api.updateLocation({
                 latitude:storage.get('latitude'),
                 longitude:storage.get('longitude')
             })
         }
-        console.log(22)
         Api.getList().then(res=>{
-            
+            wx.hideLoading()
             const list=[res.data]
             list.map(e=>{
                 const urlListString=e.photo_url.replaceAll('\\','')
@@ -84,8 +78,22 @@ wx.showToast({
                 list
             })
         }).catch(err=>{
+            wx.hideLoading()
            console.log(err)
         })
+    }else{
+        
+            Api.getThisInfo(10181901).then(res=>{
+                console.log(res)
+                const user=res.user
+                const urlListString=user.photo_url.replaceAll('\\','')
+                user.photo_url=JSON.parse(urlListString)
+              
+                this.setData({
+                    list:[user]
+                })
+            })
+        
     }
   },
 

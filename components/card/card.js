@@ -10,8 +10,8 @@ Component({
             value: {}
         },
         isLogin: {
-            type:Boolean,
-            value:false
+            type: Boolean,
+            value: false
         }
     },
 
@@ -19,7 +19,7 @@ Component({
      * 组件的初始数据
      */
     data: {
-        
+
     },
 
     /**
@@ -27,23 +27,23 @@ Component({
      */
     lifetimes: {
         attached() {
-        console.log(222)
+            console.log(222)
         },
-        detached(){
+        detached() {
             console.log(111)
         }
     },
     methods: {
         toDetail() {
-            app.globalData.itemObj = this.data.item
+
             wx.navigateTo({
-                url: '/pages/detail/detail?canSee=0',
+                url: '/pages/detail/detail?uid=' + this.data.item.uid,
             })
         },
         toLogin(e) {
-           wx.navigateTo({
-             url: '/pages/login/login',
-           })
+            wx.navigateTo({
+                url: '/pages/login/login',
+            })
         }
     }
 })

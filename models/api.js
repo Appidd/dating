@@ -51,7 +51,18 @@ class api extends HTTP {
             method: "GET"
         })
     }
-
+  // 信息编辑
+  getThisInfo(uid){
+    return this.request({
+        url: baseUrl + '/user/data?uid='+ uid,
+        // header : {
+        //     'content-type': 'application/x-www-form-urlencoded',
+        //     // 'token':wx.getStorageSync('token')
+        // },
+        // data: parameterObj,
+        method: "GET"
+    })
+}
     //设置隐私
     setPrivacy(parameterObj){
         return this.request({

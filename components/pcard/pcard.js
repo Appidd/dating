@@ -23,9 +23,9 @@ Component({
      */
     methods: {
 toDetail(){
-    app.globalData.pcardObj = this.data.item
+  
             wx.navigateTo({
-                url: '/pages/detail/detail?canSee=1',
+                url: '/pages/detail/detail?uid='+this.data.item.uid,
             })
 }
     }
