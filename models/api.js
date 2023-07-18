@@ -2,7 +2,7 @@ import {
     HTTP
 } from '../utils/http.js';
 
-const baseUrl='https://sns.uba9.com:5230'
+const baseUrl='https://sns.cretrio.com:5230'
 class api extends HTTP {
     // 登陆接口
     userLogin(parameterObj) {
@@ -43,6 +43,17 @@ class api extends HTTP {
      getUserInfo(){
         return this.request({
             url: baseUrl + '/user/data?uid='+ getApp().globalData.uid,
+            // header : {
+            //     'content-type': 'application/x-www-form-urlencoded',
+            //     // 'token':wx.getStorageSync('token')
+            // },
+            // data: parameterObj,
+            method: "GET"
+        })
+    }
+    getCardInfo(uid){
+        return this.request({
+            url: baseUrl + '/user/data?uid='+ uid,
             // header : {
             //     'content-type': 'application/x-www-form-urlencoded',
             //     // 'token':wx.getStorageSync('token')

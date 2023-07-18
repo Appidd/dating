@@ -9,16 +9,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-        age_start:20,
-        age_end:45,
-        height_start:167,
-        height_end:187,
+        age_start:18,
+        age_end:60,
+        height_start:140,
+        height_end:200,
         sex:-1,
-        edu:1,
-        area:'选择地区',
+        edu:0,
+        area:'不限',
         sexList:['不限','女','男'],
-        educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
-        areaList: ['选择地区', '汕头', '潮州', '揭阳']
+        educationList: ['全部', '初中', '中专','高中', '大专', '本科', '硕士', '博士'],
+        areaList: ['不限', '汕头', '潮州', '揭阳','汕尾']
     },
 
     /**
@@ -45,20 +45,20 @@ this.getFilter()
     },
     reset(){
         this.setData({
-            age_start:20,
-            age_end:45,
-            height_start:167,
-            height_end:187,
+            age_start:18,
+            age_end:60,
+            height_start:140,
+            height_end:200,
             sex:-1,
-            edu:1,
-            area:'选择地区'
+            edu:-1,
+            area:'不限'
         })
         this.submit()
     },
     chooseeducation(e) {
         const index = parseInt(e.detail.value)
         this.setData({
-            edu: index
+            edu: index-1
         })
     },
      //选择地区

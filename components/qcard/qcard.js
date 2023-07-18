@@ -28,7 +28,7 @@ Component({
     methods: {
         resolve(){
             Api.getUserContact({
-                like_uid:this.data.itemObj.uid
+                like_uid:this.data.qcardObj.uid
             }).then(res=>{
                 wx.showToast({
                   title: '请求已接收',

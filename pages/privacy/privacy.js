@@ -12,29 +12,64 @@ Page({
      * 页面的初始数据
      */
     data: {
-        age_start: 22,
-        age_end: 34,
-        height_start: 156,
-        height_end: 178,
-        beginAge: 20,
-        endAge: 26,
+        age_start: 18,
+        age_end: 60,
+        height_start: 140,
+        height_end: 200,
+        beginAge: 18,
+        endAge: 60,
         show_name: 1,
         open_tel: 1,
         open_income: 1,
         open_family: 1,
-        educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
-        see_edu: 1,
-        areaList: ['选择地区', '汕头', '潮州', '揭阳'],
-        see_area: '选择地区',
-        see_not: '',
-        heightList:[150,176],
-        ageList:[16,30]
+        educationList: ['全部', '初中', '中专', '高中', '大专', '本科', '硕士', '博士'],
+        see_edu: 0,
+        areaList: ['不限', '汕头', '潮州', '揭阳', '汕尾'],
+        see_area: '不限',
+        see_not: [],
+        heightList: [150, 176],
+        ageList: [16, 30]
+    },
+    onInputFee(e) {
+        const id = e.currentTarget.dataset.item.id;
+
+        const value = e.detail.value;
+        const see_not = this.data.see_not;
+
+        see_not.forEach(e => {
+
+            if (e.id == id) {
+
+                e.value = value
+            }
+        })
+        this.setData({
+            see_not
+        });
+    },
+    onAddInput(e) {
+        const see_not = this.data.see_not
+        see_not.push({
+            id: Date.parse(new Date()),
+            value: ''
+        })
+        this.setData({
+            see_not: see_not
+        });
+
+    },
+    onDeleteInput() {
+        const see_not = this.data.see_not
+        see_not.pop()
+        this.setData({
+            see_not: see_not
+        });
     },
     //选择学历
     chooseeducation(e) {
         const index = parseInt(e.detail.value)
         this.setData({
-            see_edu: index
+            see_edu: index - 1
         })
     },
     //选择地区
@@ -67,7 +102,7 @@ Page({
     }) {
         // 需要手动对 checked 状态进行更新
         this.setData({
-            show_name: detail?1:0
+            show_name: detail ? 1 : 0
         });
     },
     onChange2({
@@ -75,7 +110,7 @@ Page({
     }) {
         // 需要手动对 checked 状态进行更新
         this.setData({
-            open_tel: detail?1:0
+            open_tel: detail ? 1 : 0
         });
     },
     onChange3({
@@ -83,7 +118,7 @@ Page({
     }) {
         // 需要手动对 checked 状态进行更新
         this.setData({
-            open_income: detail?1:0
+            open_income: detail ? 1 : 0
         });
     },
     onChange4({
@@ -91,59 +126,82 @@ Page({
     }) {
         // 需要手动对 checked 状态进行更新
         this.setData({
-            open_family: detail?1:0
+            open_family: detail ? 1 : 0
         });
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        const that=this
-     Api.getPrivacy().then(res=>{
-       let  {show_name,
-            open_tel,
-            open_income,
-            open_family,
-            see_edu,
-            see_area,
-            see_not,
-            height_end,
-            height_start,
-            age_start,
-            age_end}=res.data
-            show_name=parseInt(show_name)
-            open_tel=parseInt(open_tel)
-            open_income=parseInt(open_income)
-            open_family=parseInt(open_family)
-            height_end=parseInt(height_end||176)
-            height_start=parseInt(height_start||150)
-            age_start=parseInt(age_start||16)
-            age_end=parseInt(age_end||30)
+        const that = this
+        Api.getPrivacy().then(res => {
+            let {
+                show_name,
+                open_tel,
+                open_income,
+                open_family,
+                see_edu,
+                see_area,
+                see_not,
+                height_end,
+                height_start,
+                age_start,
+                age_end
+            } = res.data
+            show_name = parseInt(show_name)
+            open_tel = parseInt(open_tel)
+            open_income = parseInt(open_income)
+            open_family = parseInt(open_family)
+            height_end = parseInt(height_end || 176)
+            height_start = parseInt(height_start || 150)
+            age_start = parseInt(age_start || 16)
+            age_end = parseInt(age_end || 30)
             that.setData({
                 show_name,
-            open_tel,
-            open_income,
-            open_family,
-            see_edu,
-            see_area,
-            see_not,
-            height_end,
-            height_start,
-            age_start,
-            age_end,
-            ageList:[age_start,age_end],
-            heightList:[height_start,height_end]
+                open_tel,
+                open_income,
+                open_family,
+                see_edu,
+                see_area,
+
+                height_end,
+                height_start,
+                age_start,
+                age_end,
+                ageList: [age_start, age_end],
+                heightList: [height_start, height_end]
             })
-        
-     }).catch(err=>{
-    console.log(err)     
-    })
+            console.log(see_not)
+            this.formatseeNot(JSON.parse([see_not]))
+        }).catch(err => {
+            console.log(err)
+        })
+    },
+    formatseeNot(array) {
+        let see_not = []
+        array.forEach((e, i) => {
+            see_not.push({
+                id: 1,
+                value: e
+            })
+        })
+        this.setData({
+            see_not
+        })
     },
     submit() {
-        console.log(this.data.open_family)
+        console.log(this.data.see_not)
+        let orsee_not=this.data.see_not
+        let see_not=[]
+        orsee_not.forEach(e=>{
+            see_not.push(e.value)
+        })
+        console.log(see_not)
+
         wx.showLoading({
             title: '正在保存',
         })
+        
         const {
             show_name,
             open_tel,
@@ -151,7 +209,6 @@ Page({
             open_family,
             see_edu,
             see_area,
-            see_not,
             height_end,
             height_start,
             age_start,
@@ -164,7 +221,7 @@ Page({
             open_family,
             see_edu,
             see_area,
-            see_not,
+            see_not:JSON.stringify(see_not),
             height_end,
             height_start,
             age_start,
@@ -174,9 +231,9 @@ Page({
             wx.showToast({
                 title: '保存成功',
             })
-            setTimeout(e=>{
+            setTimeout(e => {
                 wx.navigateBack()
-            },2000)
+            }, 2000)
         }).catch(err => {
             wx.hideLoading()
             wx.showToast({

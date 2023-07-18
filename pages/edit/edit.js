@@ -18,7 +18,7 @@ Page({
         wechat: '',
         family: '',
         hobby: '',
-        income: '',
+        income: 5,
         industry: '',
         weight: '',
         height: '',
@@ -43,13 +43,37 @@ Page({
         animals: '鼠',
         constellationList: ['水瓶座', '双鱼座', '白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座'],
         constellation: '狮子座',
-        educationList: ['小学', '初中', '高中', '大专', '本科', '硕士', '博士'],
+        educationList: [ '初中','中专', '高中', '大专', '本科', '硕士', '博士'],
         education: 4,
-        areaList: ['选择地区', '汕头', '潮州', '揭阳'],
+        areaList: ['选择地区', '汕头', '潮州', '揭阳','汕尾'],
         area: '选择地区',
-        nowAreaList: ['选择现居', '汕头', '潮州', '揭阳'],
+        nowAreaList: ['选择现居', '汕头', '潮州', '揭阳','汕尾'],
         now_area: '选择现居',
-        uid:getApp().globalData.uid
+        uid:getApp().globalData.uid,
+        incomeList:[{
+            name:'10万以下',
+            value:5
+        },{
+            name:'10万-20万',
+            value:15
+        },
+        {
+            name:'20万-30万',
+            value:25
+        },
+        {
+            name:'30万-50万',
+            value:40
+        },
+        {
+            name:'50万-100万',
+            value:75
+        },
+        {
+            name:'100万以上',
+            value:100
+        }
+       ]
     },
 
     /**
@@ -65,7 +89,8 @@ Page({
             console.log(res.user)
             const user = res.user
             that.setData({
-                ...user
+                ...user,
+                canEdit:user.real_name?false:true
             })
             let sex = parseInt(user.sex)
             console.log(sex)
@@ -223,6 +248,14 @@ console.log(cascaderData)
         const zodiac = this.data.chineseZodiacList[index]
         this.setData({
             animals: zodiac
+        })
+    },
+    //选择年收入
+    chineseIncome(e){
+        const index = parseInt(e.detail.value)
+        const zodiac = this.data.incomeList[index]
+        this.setData({
+            income: zodiac.value
         })
     },
     //选择地区

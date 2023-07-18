@@ -1,6 +1,6 @@
 <view class="container">
     <view class="container_box">
-        <image src="https://sns.uba9.com:5230/static/photo/qrcode.jpg" mode="aspectFill" class="group_scan" bindtap="preview" />
+        <image src="https://sns.cretrio.com:5230/static/photo/qrcode.jpg" mode="aspectFill" class="group_scan" bindtap="preview" />
         
         <view class="group_name">
             微信交流群

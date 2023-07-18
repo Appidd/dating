@@ -2,7 +2,31 @@
     font-size: 28rpx;
     font-weight: bold;
 }
-
+.input-container{
+    margin-bottom: 24rpx;
+    display: flex;
+    padding: 10rpx 32rpx 0rpx 32rpx;
+  }
+  .input-box{
+    background-color: #F4F4F4;
+    line-height: 64rpx;
+    height: 64rpx;
+    padding: 0rpx 32rpx;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    width: 100%;
+  }
+  .operate{
+    display: flex;
+    height: 64rpx;
+    align-items: center;
+    margin-left: 300rpx;
+  }
+  .operate_icon{
+    height: 32rpx;
+    width: 32rpx;
+    border-radius: 50%;
+  }
 .switch_box {
     margin-top: 20rpx;
     width: 100%;
@@ -86,7 +110,7 @@
 .bottom_fun {
     width: 100%;
     background-color: #fff;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     padding: 20rpx 48rpx 48rpx 48rpx;
     box-sizing: border-box;

@@ -13,18 +13,27 @@ Page({
      */
     data: {
         itemObj:null,
-        canSee:false
+      
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.canSee)
-        console.log(app.globalData.itemObj)
+        const that=this
+        Api.getCardInfo(options.uid).then(res=>{
+           that.formatUser(res.user)
+        }).catch(err=>{
+
+        })
+       
+    },
+    formatUser(user){
+        const urlListString = user.photo_url.replaceAll('\\', '')
+       
+        user.photo_url = JSON.parse(urlListString)
         this.setData({
-            itemObj:app.globalData.itemObj,
-            canSee:options.canSee=='1'?true:false
+            itemObj:user
         })
     },
     getBack(){

@@ -25,7 +25,7 @@ Component({
 toDetail(){
   
             wx.navigateTo({
-                url: '/pages/detail/detail?uid='+this.data.item.uid,
+                url: '/pages/detail/detail?uid='+this.data.pcardObj.uid,
             })
 }
     }

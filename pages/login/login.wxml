@@ -20,8 +20,13 @@
                 微信一键授权登录
             </view>
         </view>
-        <view style="margin-top: 64rpx;">
-            <text style="font-size: 24rpx;color: #C7C7C7;">登录即代表您同意 <text style="color: #015CAD;">用户协议</text> 和 <text style="color: #015CAD;">隐私政策</text></text>
+        <view style="margin-top: 64rpx; display: flex;align-items: center;">
+           <view>
+           <checkbox-group bindchange="checkChange">
+            <checkbox  checked="{{checked}}" />
+           </checkbox-group>
+           </view>
+            <text  bindtap="toAgreement" style="font-size: 24rpx;color: #C7C7C7;">我已阅读并同意 <text style="color: #015CAD;">用户协议</text> 和 <text style="color: #015CAD;">隐私政策</text></text>
         </view>
     </view>
 </view>

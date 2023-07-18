@@ -1,3 +1,8 @@
+<template name="inputItem">
+    <view class="input-container">
+        <input class="input-box left_input" placeholder="请输入uid" bindinput="onInputFee" data-item="{{item}}" type="number" value="{{item.value}}" />
+    </view>
+</template>
 <view class="container">
     <view class="switch_box">
         <view class="switch_item">
@@ -67,44 +72,48 @@
 
         </van-slider>
     </view>
-   <view class="education_region">
-    <picker mode="selector" range="{{educationList}}" bindchange="chooseeducation"> 
-        <view class="region_item">
-            <view class="title bold require">
-                学历
-            </view>
-            <view class="choose_box">
-                <view>
-                    {{see_edu==0?'小学':see_edu==1?'初中':see_edu==2?'高中':see_edu==3?'大专':see_edu==4?'本科':see_edu==5?'硕士':'博士'}}
+    <view class="education_region">
+        <picker mode="selector" range="{{educationList}}" bindchange="chooseeducation">
+            <view class="region_item">
+                <view class="title bold require">
+                    学历
                 </view>
-                <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+                <view class="choose_box">
+                    <view>
+                        {{see_edu==-1?'全部':see_edu==0?'初中':see_edu==1?'中专':see_edu==2?'高中':see_edu==3?'大专':see_edu==4?'本科':see_edu==5?'硕士':'博士'}}
+                    </view>
+                    <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
+                </view>
             </view>
-        </view>
-       </picker>
+        </picker>
 
-       <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
+        <picker mode="selector" range="{{areaList}}" bindchange="chooseArea">
             <view class="title bold require">
                 区域
             </view>
             <view class="choose_box">
                 <view>
-                    {{see_area}}
+                    {{see_area=='[]'?'不限':see_area}}
                 </view>
                 <image src="/static/images/icon/downArrow.png" mode="aspectFill" />
             </view>
-       </picker>
-   </view>
+        </picker>
+    </view>
 
-   <view class="title_type bold">
+    <view class="title_type bold">
         <image src="/static/images/icon/cantLook.png" mode="aspectFill" class="look" />
         <view style="margin-left: 32rpx;">
             不给谁看
         </view>
+        <view class="operate">
+        <image src="../../static/images/tarbar/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="carfare" />
+        <image src="../../static/images/tarbar/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="carfare" wx:if="{{see_not.length}}" style="margin-left: 60rpx;"/>
     </view>
-    <input model:value="{{see_not}}" placeholder="输入uid" class="contact_area" placeholder-class="placeholder" maxlength="200" />
-    <view style="height: 200rpx;">
-
     </view>
+    <block wx:for="{{see_not}}" wx:for-item="item">
+        <template is="inputItem" data="{{item}}" data-index="{{index}}"></template>
+    </block>
+    
 </view>
 
 <view class="bottom_fun">

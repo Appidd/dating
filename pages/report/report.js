@@ -136,7 +136,7 @@ Page({
         wx.showLoading({
           title: '提交中',
         })
-       const uploadUrl='https://sns.uba9.com:5230/up/report'
+       const uploadUrl='https://sns.cretrio.com:5230/up/report'
         wx.uploadFile({
             url: uploadUrl,
             header: {

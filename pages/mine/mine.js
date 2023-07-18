@@ -16,20 +16,20 @@ Page({
         matchedList: [
 
         ],
-        requestedList: [
-
-        ]
+        requestedList: [],
+        matchedList:[]
     },
     reSet(){
         this.setData({
             imgList:[],
             real_name:'',
-            uid:'000'
+            uid:'000',
+            requestedList: [],
+            matchedList:[]
         })
     },
     refresh() {
         this.getSeekList()
-
     },
     getBanner() {
         Api.getBanner().then(res => {
@@ -89,8 +89,7 @@ Page({
      */
     onLoad(options) {
         this.getBanner()
-        this.getSeeList()
-        this.getSeekList()
+       
     },
     //匹配列表
     getSeeList() {
@@ -100,19 +99,19 @@ Page({
                 page: 1
             }).then(res => {
                 const list = res.data
-                if (list.length) {
+               
+                if (list.length>0) {
                     list.map(e => {
-                        e.photo_url = JSON.parse(e.photo_url)[0]
-                        e.like_list = JSON.parse(e.like_list)
+                        e.photo_url = JSON.parse(e.photo_url)
+                        // e.like_list = JSON.parse(e.like_list)
                     })
-                    console.log(list)
-
                 }
+                console.log(list)
                 that.setData({
                     matchedList: list
                 })
             }).catch(err => {
-
+console.log(err)
             })
         }
 
@@ -128,20 +127,17 @@ Page({
                 const list = res.data
                 if (list.length) {
                     list.map(e => {
-                        e.photo_url = JSON.parse(e.photo_url)[0]
-                        e.like_list = JSON.parse(e.like_list)
+                        e.photo_url = JSON.parse(e.photo_url)
+                        // e.like_list = JSON.parse(e.like_list)
                     })
                     console.log(list)
-
+                    that.setData({
+                        requestedList: list
+                    })
                 }
-                that.setData({
-                    requestedList: list
-                })
             }).catch(err => {
-
             })
         }
-
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -155,6 +151,8 @@ Page({
      */
     onShow() {
         const that = this
+        this.getSeeList()
+                this.getSeekList()
         if (getApp().isLogin()) {
             Api.userUid().then(re => {
                 if(re.code==201){
@@ -172,7 +170,7 @@ Page({
                         sex: parseInt(user.sex) | 0,
                         imgList: JSON.parse(user.photo_url)
                     })
-                }).then(err => {
+                }).catch(err => {
                 })
                 }
             })

@@ -14,7 +14,7 @@
             {{item.real_name}} <text style="margin-left: 32rpx;">{{item.age}}</text>
         </view>
         <view class="address">
-            {{item.area}} <text>({{item.distance||0}}km)</text>
+            {{item.area}} 
         </view>
         <view class="intro">
             {{item.industry}}

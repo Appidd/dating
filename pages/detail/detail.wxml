@@ -32,27 +32,27 @@
             </view>
             <view class="tag" wx:if=" {{itemObj.edu}}">
                 
-                {{itemObj.edu=='0'?'小学':itemObj.edu=='1'?'初中':itemObj.edu=='2'?'高中':itemObj.edu=='3'?'大专':itemObj.edu=='4'?'本科':itemObj.edu=='5'?'硕士':'博士'}}
+                {{itemObj.edu=='0'?'初中':itemObj.edu=='1'?'中专':itemObj.edu=='2'?'高中':itemObj.edu=='3'?'大专':itemObj.edu=='4'?'本科':itemObj.edu=='5'?'硕士':'博士'}}
             </view>
-            <view class="tag" wx:if=" {{itemObj.income}}">
+            <view class="tag" wx:if=" {{itemObj.open_income}}">
                 
-                {{itemObj.income}}以上
+                {{itemObj.income==5?'10万以下':itemObj.income==15?'10万-20万':itemObj.income==25?'20万-30万':itemObj.income==40?'10万-50万':itemObj.income==75?'50万-100万':'100万以上'}}
             </view>
 
             <!-- <view class="tag" wx:for="{{itemObj.like_list}}" >
                 {{item}}
             </view> -->
         </view>
-        <view class="about_me" wx:if="{{canSee}}">
+        <view class="about_me" wx:if="{{itemObj.open_tel&&itemObj.wechat}}">
             微信号
         </view>
-        <view class="address" wx:if="{{canSee||itemObj.is_del!='False'}}">
+        <view class="address" wx:if="{{itemObj.open_tel&&itemObj.wechat}}">
             {{itemObj.wechat}}
         </view>
-        <view class="about_me">
+        <view class="about_me" wx:if="{{itemObj.open_family&&itemObj.family}}">
             About
         </view>
-        <view class="bg">
+        <view class="bg" wx:if="{{itemObj.open_family&&itemObj.family}}">
             家庭背景 <text style="margin-left: 32rpx;">{{itemObj.family}}</text>
         </view>
         <view class="reveng" style="margin-top: 16rpx;">
@@ -64,7 +64,7 @@
         
     </view>
 </view>
-<view class="bottom_fun" wx:if="{{!canSee}}">
+<view class="bottom_fun" wx:if="{{!itemObj.open_tel}}">
         <view class="funbtn" bindtap="getContact">
             <view class="contact">
                 获取联系

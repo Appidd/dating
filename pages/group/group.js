@@ -16,7 +16,7 @@ Page({
     },
     preview(){
         wx.previewImage({
-          urls: ['https://sns.uba9.com:5230/static/photo/qrcode.jpg'],
+          urls: ['https://sns.cretrio.com:5230/static/photo/qrcode.jpg'],
         })
     },
     /**

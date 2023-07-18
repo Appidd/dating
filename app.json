@@ -43,15 +43,5 @@
   "usingComponents": {
     "van-uploader": "@vant/weapp/uploader/index",
     "van-empty": "@vant/weapp/empty/index"
-  },
-  "requiredPrivateInfos": [
-      "getLocation"
-  ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "展示您的位置信息"
-    }
   }
-
-
 }

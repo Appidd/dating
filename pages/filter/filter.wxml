@@ -45,7 +45,7 @@
 
         <view class="choose_box">
             <view>
-                    {{edu==0?'小学':edu==1?'初中':edu==2?'高中':edu==3?'大专':edu==4?'本科':edu==5?'硕士':'博士'}}
+                    {{edu==-1?'全部':edu==0?'初中':edu==1?'中专':edu==2?'高中':edu==3?'大专':edu==4?'本科':edu==5?'硕士':'博士'}}
                 </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>
@@ -57,7 +57,7 @@
    <picker mode="selector" range="{{areaList}}" bindchange="chooseArea"> 
     <view class="choose_box">
        <view>
-       {{area||'选择地区'}}
+       {{area||'不限'}}
        </view>
        <image src="/static/images/icon/downArrow.png" mode="aspectFill"/>
    </view>

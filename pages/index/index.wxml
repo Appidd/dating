@@ -2,19 +2,15 @@
     <navigation-bar></navigation-bar>
     <view class="scroll_box_outer">
         <scroll-view class="scroll_box"  style="display: flex;" scroll-x="{{true}}"    paging-enabled enable-flex enhanced bindscrolltolower='getMore'>
-            
-            
             <block wx:if="{{list.length}}">
                 <card item="{{item}}" wx:for="{{list}}" isLogin="{{isLogin}}"></card>
+                
             </block>
             <block wx:else>
                <view style="width: 750rpx;display: flex;justify-content: center;">
                 <van-empty description="暂无内容" />
                </view>
             </block>
-             
-          
-            
         </scroll-view>
     </view>
 </view>
